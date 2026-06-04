@@ -15,7 +15,7 @@
 - If the server is already running, do not start a second instance.
 
 ## Screenshot Workflow
-- Puppeteer is installed at `C:/Users/nateh/AppData/Local/Temp/puppeteer-test/`. Chrome cache is at `C:/Users/nateh/.cache/puppeteer/`.
+- Puppeteer is installed locally (`node_modules/puppeteer`). Chrome cache is at `~/.cache/puppeteer/`.
 - **Always screenshot from localhost:** `node screenshot.mjs http://localhost:3000`
 - Screenshots are saved automatically to `./temporary screenshots/screenshot-N.png` (auto-incremented, never overwritten).
 - Optional label suffix: `node screenshot.mjs http://localhost:3000 label` → saves as `screenshot-N-label.png`
@@ -52,3 +52,11 @@
 - Do not stop after one screenshot pass
 - Do not use `transition-all`
 - Do not use default Tailwind blue/indigo as primary color
+
+## Skill Priority Rules
+When the `frontend-design` and `ui-ux-pro-max` skills conflict with these rules, these rules win:
+
+- **Brand colors take priority over creative freedom.** Both skills encourage bold color choices. Ignore that when a palette is defined in `brand_assets/` — use those exact hex values always.
+- **Output is always a single `index.html`.** `frontend-design` mentions React/Vue as options. Ignore that — always output a single `index.html` with inline styles and Tailwind CDN, unless the user explicitly says otherwise.
+- **`ui-ux-pro-max` React Native sections do not apply.** The skill's Step 1 analysis, Step 4 stack guidelines, and Pre-Delivery Checklist are scoped to mobile apps. Skip them. Use the skill only for its design system generation (Step 2) and Quick Reference rules (accessibility, typography, color, layout, animation).
+- **When a reference image is provided, match it exactly.** Both skills push for creative reinvention. That only applies when designing from scratch with no reference.
