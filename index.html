@@ -201,6 +201,10 @@
       position: absolute; inset: 0; width: 100%; height: 100%;
       object-fit: cover; object-position: 60% center; z-index: 0;
     }
+    /* desktop: frame to the right so the artist clears the left-aligned copy */
+    @media (min-width: 901px) {
+      .video-hero-media { object-position: 100% center; }
+    }
     /* paper scrim for text legibility — light from the text side, fading to clear video */
     .video-hero-scrim {
       position: absolute; inset: 0; z-index: 1; pointer-events: none;
@@ -279,26 +283,15 @@
     <div class="video-hero-content">
       <div class="mx-auto max-w-7xl px-5 lg:px-10 w-full pt-28 pb-24 lg:py-0">
         <div class="hero-copy-shadow max-w-2xl text-center lg:text-left mx-auto lg:mx-0">
-          <p class="eyebrow reveal">Ilhabela · São Paulo · Cascais</p>
+          <p class="eyebrow reveal">Ilhabela</p>
           <h1 class="reveal mt-5 font-display font-semibold text-[clamp(3rem,9vw,6.4rem)] leading-[0.95] text-terracotta">
             Beleza solar,<br>
             <span class="italic font-medium text-sienna">feita para durar</span><br>
             o dia inteiro.
           </h1>
-          <p class="reveal mt-7 max-w-xl mx-auto lg:mx-0 text-[1.08rem] text-ink/90 leading-relaxed">
-            Maquiagem e penteados de alta performance para noivas e ocasiões especiais. A técnica <em class="not-italic text-deep-teal font-normal">Second Skin</em> revela a sua pele real — radiante sob a luz natural e impecável diante das câmeras, mesmo sob o sol e a maresia do litoral.
+          <p class="reveal mt-7 max-w-md mx-auto lg:mx-0 text-[1.08rem] text-ink/90 leading-relaxed">
+            Maquiagem e penteados de alta performance para noivas, com a técnica <em class="not-italic text-deep-teal font-normal">Second Skin</em>.
           </p>
-          <div class="reveal mt-9 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <a href="#contato" class="btn btn-primary">Solicitar orçamento</a>
-            <a href="#contato" class="btn btn-ghost">Agendar atendimento</a>
-          </div>
-          <div class="reveal mt-10 flex items-center gap-7 justify-center lg:justify-start text-sm text-ink/75">
-            <div><span class="block font-display text-3xl text-terracotta font-semibold leading-none">16+</span>anos de carreira</div>
-            <div class="h-9 w-px bg-rose/40"></div>
-            <div><span class="block font-display text-3xl text-terracotta font-semibold leading-none">MAC</span>Cosmetics Europa</div>
-            <div class="h-9 w-px bg-rose/40"></div>
-            <div><span class="block font-display text-3xl text-terracotta font-semibold leading-none">3</span>destinos de atendimento</div>
-          </div>
         </div>
       </div>
     </div>
