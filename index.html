@@ -228,18 +228,6 @@
       background: var(--paper); padding: 8rem 0 5rem; will-change: opacity;
     }
 
-    /* oversized scroll marquee */
-    .hero-marquee {
-      position: fixed; left: 0; right: 0; bottom: 7vh; z-index: 3;
-      opacity: 0; pointer-events: none; white-space: nowrap; overflow: hidden;
-      will-change: transform, opacity;
-    }
-    .hero-marquee-text {
-      display: inline-block; font-family:"Cormorant Garamond",serif; font-weight:600; font-style: italic;
-      font-size: 13vw; line-height: 1; letter-spacing:-.02em; color: transparent;
-      -webkit-text-stroke: 1px rgba(138,75,45,.30); text-stroke: 1px rgba(138,75,45,.30);
-    }
-
     /* caption beats layered over the video */
     .hero-caption {
       position: fixed; inset: 0; z-index: 6; display: flex; align-items: center;
@@ -292,7 +280,6 @@
       .align-right .cap-body { margin: 1.1rem auto 0; }
       .hero-caption-inner::before,
       .align-right .hero-caption-inner::before { background: radial-gradient(82% 72% at 50% 50%, rgba(251,246,236,.84), transparent 76%); }
-      .hero-marquee-text { font-size: 23vw; }
     }
     @media (prefers-reduced-motion: reduce) {
       .hero-caption,
@@ -358,11 +345,6 @@
   <div class="canvas-wrap" id="canvasWrap" aria-hidden="true">
     <canvas id="hero-canvas"></canvas>
     <div class="canvas-vignette"></div>
-  </div>
-
-  <!-- oversized scroll marquee -->
-  <div class="hero-marquee" id="heroMarquee" aria-hidden="true">
-    <span class="hero-marquee-text">beleza solar · second skin · ao nascer do sol · beleza solar · second skin ·&nbsp;</span>
   </div>
 
   <!-- caption beats layered over the video -->
@@ -1121,7 +1103,6 @@
       const canvasWrap = document.getElementById('canvasWrap');
       const heroStandalone = document.getElementById('heroStandalone');
       const master = document.getElementById('hero-master');
-      const marquee = document.getElementById('heroMarquee');
       const loader = document.getElementById('hero-loader');
       const loaderFill = document.getElementById('loaderFill');
       const loaderPct = document.getElementById('loaderPct');
@@ -1190,9 +1171,6 @@
         const acc = Math.min(p * FRAME_SPEED, 1);
         const idx = Math.min(Math.floor(acc * FRAME_COUNT), FRAME_COUNT - 1);
         requestAnimationFrame(() => drawFrame(idx));
-        // oversized marquee slides + fades through the middle
-        marquee.style.transform = `translateX(${(-p * 28).toFixed(2)}vw)`;
-        marquee.style.opacity = (clamp(1 - Math.abs(p - 0.5) / 0.32, 0, 1) * 0.9).toFixed(3);
         // caption beats
         const pp = p * 100;
         captions.forEach((c) => {
