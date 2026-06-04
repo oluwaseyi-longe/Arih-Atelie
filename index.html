@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arih Ateliê — Beleza Natural para Noivas | Ilhabela · São Paulo · Cascais</title>
+  <meta name="description" content="Arih Ateliê — beleza de alta performance para noivas e eventos especiais. Maquiagem e penteados com a técnica Second Skin, resistentes à maresia. Destination Wedding em Ilhabela e região." />
+  <meta name="theme-color" content="#FBF6EC" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Arih Ateliê — Natural Bridal Beauty" />
+  <meta property="og:description" content="Beleza solar, alta performance e resistência à maresia. Maquiagem e penteados para noivas em Ilhabela e região." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:image" content="brand_assets/logo.jpeg" />
+
+  <link rel="icon" href="brand_assets/logo.jpeg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&family=Petit+Formal+Script&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sand:      '#CEC4B2',
+            mist:      '#B0CAD0',
+            rose:      '#AB918F',
+            teal:      '#507C86',
+            'deep-teal': '#0F5563',
+            terracotta:'#8A4B2D',
+            sienna:    '#A85E33',
+            gold:      '#BD894A',
+            paper:     '#FBF6EC',
+            'paper-deep': '#F4ECDD',
+            ink:       '#473B31',
+          },
+          fontFamily: {
+            display: ['"Cormorant Garamond"', 'serif'],
+            body: ['"Jost"', 'sans-serif'],
+            script: ['"Petit Formal Script"', 'cursive'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --sand:#CEC4B2; --mist:#B0CAD0; --rose:#AB918F; --teal:#507C86;
+      --deep-teal:#0F5563; --terracotta:#8A4B2D; --gold:#BD894A;
+      --paper:#FBF6EC; --ink:#473B31;
+      --space: clamp(5rem, 10vw, 9rem);
+    }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
+    }
+
+    body {
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: "Jost", sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Paper grain texture overlay */
+    body::before {
+      content:"";
+      position: fixed; inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: .05;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* Headings */
+    h1,h2,h3,h4 { font-family:"Cormorant Garamond", serif; color: var(--terracotta); font-weight: 600; line-height: 1.08; }
+
+    .eyebrow {
+      font-family:"Jost", sans-serif; font-weight:500; text-transform:uppercase;
+      letter-spacing:.34em; font-size:.72rem; color: var(--teal);
+    }
+    .script-accent { font-family:"Petit Formal Script", cursive; color: var(--sienna); }
+
+    /* Hand-painted brushstroke underline under headings */
+    .brush-underline { position: relative; display:inline-block; }
+    .brush-underline::after {
+      content:""; position:absolute; left:-4%; right:-4%; bottom:-.32em; height:.42em;
+      background: radial-gradient(ellipse 60% 100% at 30% 50%, rgba(80,124,134,.55), transparent 70%),
+                  radial-gradient(ellipse 70% 90% at 75% 60%, rgba(189,137,74,.5), transparent 72%);
+      filter: blur(2px); border-radius: 50%;
+    }
+
+    /* Watercolor wash blobs */
+    .wash { position:absolute; border-radius:50%; filter: blur(48px); pointer-events:none; z-index:0; opacity:.5; }
+
+    /* Glass-ish card with layered tinted shadow */
+    .card {
+      background: rgba(255,253,248,.72);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(171,145,143,.22);
+      box-shadow: 0 1px 2px rgba(71,59,49,.04),
+                  0 18px 40px -24px rgba(80,124,134,.40),
+                  0 8px 18px -14px rgba(138,75,45,.20);
+      transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s cubic-bezier(.22,1,.36,1), border-color .35s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(80,124,134,.40);
+      box-shadow: 0 1px 2px rgba(71,59,49,.05),
+                  0 30px 60px -28px rgba(80,124,134,.55),
+                  0 14px 26px -18px rgba(138,75,45,.28);
+    }
+
+    /* Buttons */
+    .btn { position:relative; display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
+      font-family:"Jost",sans-serif; font-weight:500; letter-spacing:.06em; font-size:.92rem;
+      border-radius:999px; padding:.95rem 2rem; cursor:pointer;
+      transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease, background-color .3s ease, color .3s ease;
+      will-change: transform; text-decoration:none;
+    }
+    .btn:focus-visible { outline:2px solid var(--deep-teal); outline-offset:3px; }
+    .btn-primary { background: var(--terracotta); color:#FDF7EE;
+      box-shadow: 0 14px 30px -14px rgba(138,75,45,.7), inset 0 1px 0 rgba(255,255,255,.12); }
+    .btn-primary:hover { transform: translateY(-3px); background:#7A4026;
+      box-shadow: 0 20px 38px -16px rgba(138,75,45,.78); }
+    .btn-primary:active { transform: translateY(-1px) scale(.985); }
+    .btn-ghost { background: rgba(255,255,255,.45); color: var(--deep-teal);
+      border:1.5px solid rgba(80,124,134,.5); }
+    .btn-ghost:hover { transform: translateY(-3px); background: rgba(80,124,134,.1); border-color: var(--deep-teal); }
+    .btn-ghost:active { transform: translateY(-1px) scale(.985); }
+
+    a, button { -webkit-tap-highlight-color: transparent; }
+
+    /* Nav link underline */
+    .nav-link { position:relative; color: var(--ink); font-weight:400; font-size:.92rem; letter-spacing:.04em; transition: color .25s; padding: .25rem 0; }
+    .nav-link::after { content:""; position:absolute; left:0; bottom:-2px; height:1.5px; width:0; background: var(--terracotta); transition: width .3s cubic-bezier(.22,1,.36,1); }
+    .nav-link:hover { color: var(--terracotta); }
+    .nav-link:hover::after, .nav-link:focus-visible::after { width:100%; }
+    .nav-link:focus-visible { outline:none; color: var(--terracotta); }
+
+    /* Reveal on scroll */
+    .reveal { opacity:0; transform: translateY(28px); transition: opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1); }
+    .reveal.in { opacity:1; transform:none; }
+
+    /* Slow float for hero accents */
+    @keyframes floaty { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-14px) } }
+    .floaty { animation: floaty 9s ease-in-out infinite; }
+
+    /* Image watercolor framing */
+    .wc-frame { position:relative; }
+    .wc-frame img { display:block; width:100%; height:100%; object-fit:cover; }
+
+    /* Decorative torn paper / soft section edge */
+    .soft-divider { height: 90px; background: linear-gradient(180deg, transparent, rgba(244,236,221,.85)); }
+
+    details > summary { list-style:none; cursor:pointer; }
+    details > summary::-webkit-details-marker { display:none; }
+    details[open] .faq-icon { transform: rotate(45deg); }
+    .faq-icon { transition: transform .3s ease; }
+
+    input, textarea {
+      font-family:"Jost",sans-serif; font-weight:300;
+      background: rgba(255,255,255,.6); border:1px solid rgba(171,145,143,.4);
+      transition: border-color .25s, box-shadow .25s, background-color .25s;
+    }
+    input:focus, textarea:focus {
+      outline:none; border-color: var(--teal); background: rgba(255,255,255,.9);
+      box-shadow: 0 0 0 4px rgba(80,124,134,.13);
+    }
+    ::placeholder { color: #9a8e7f; opacity:1; }
+
+    ::selection { background: rgba(138,75,45,.2); }
+    ::-webkit-scrollbar { width: 11px; }
+    ::-webkit-scrollbar-track { background: var(--paper); }
+    ::-webkit-scrollbar-thumb { background: var(--sand); border-radius:10px; border:3px solid var(--paper); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--rose); }
+
+    .float-wa { box-shadow: 0 12px 28px -10px rgba(15,85,99,.55); transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s; }
+    .float-wa:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 18px 34px -12px rgba(15,85,99,.65); }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- ============ NAV ============ -->
+  <header id="top" class="fixed top-0 inset-x-0 z-50 transition-all duration-500" data-nav>
+    <nav class="mx-auto max-w-7xl px-5 lg:px-10">
+      <div data-navbar class="mt-3 flex items-center justify-between rounded-full px-4 sm:px-6 py-2.5 transition-all duration-500">
+        <a href="#top" class="flex items-center gap-3 group" aria-label="Arih Ateliê — início">
+          <img src="brand_assets/logo.jpeg" alt="Logotipo Arih Ateliê" class="h-11 w-11 rounded-full object-cover ring-1 ring-sand/70 transition-transform duration-500 group-hover:scale-105" style="object-position: 50% 32%;" />
+          <span class="flex flex-col leading-none">
+            <span class="font-display text-2xl font-semibold text-terracotta tracking-wide">Arih Ateliê</span>
+            <span class="eyebrow !text-[0.55rem] !tracking-[0.28em] mt-0.5 text-teal/90">Natural Bridal Beauty</span>
+          </span>
+        </a>
+
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="#sobre" class="nav-link">Sobre</a>
+          <a href="#servicos" class="nav-link">Serviços</a>
+          <a href="#portfolio" class="nav-link">Portfólio</a>
+          <a href="#processo" class="nav-link">Como funciona</a>
+          <a href="#depoimentos" class="nav-link">Depoimentos</a>
+          <a href="#contato" class="btn btn-primary !py-2.5 !px-6 !text-sm">Agendar atendimento</a>
+        </div>
+
+        <button id="menuBtn" class="lg:hidden p-2 text-terracotta" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="lg:hidden hidden mx-5 mt-2 rounded-3xl card !backdrop-blur-xl p-6">
+      <div class="flex flex-col gap-1 text-lg">
+        <a href="#sobre" class="nav-link py-2">Sobre</a>
+        <a href="#servicos" class="nav-link py-2">Serviços</a>
+        <a href="#portfolio" class="nav-link py-2">Portfólio</a>
+        <a href="#processo" class="nav-link py-2">Como funciona</a>
+        <a href="#depoimentos" class="nav-link py-2">Depoimentos</a>
+        <a href="#faq" class="nav-link py-2">Dúvidas</a>
+        <a href="#contato" class="btn btn-primary mt-3">Agendar atendimento</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="relative min-h-[100svh] flex items-center overflow-hidden pt-28 pb-20">
+    <!-- watercolor washes -->
+    <div class="wash" style="width:46vw;height:46vw;top:-12%;right:-8%;background: radial-gradient(circle,#B0CAD0,transparent 65%);"></div>
+    <div class="wash" style="width:40vw;height:40vw;top:18%;left:-12%;background: radial-gradient(circle,#CEC4B2,transparent 66%);opacity:.6;"></div>
+    <div class="wash" style="width:34vw;height:34vw;bottom:-14%;right:18%;background: radial-gradient(circle,#BD894A,transparent 68%);opacity:.32;"></div>
+
+    <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10 grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-8 items-center w-full">
+      <!-- Copy -->
+      <div class="text-center lg:text-left">
+        <p class="eyebrow reveal">Ilhabela · São Paulo · Cascais</p>
+        <h1 class="reveal mt-5 font-display font-semibold text-[clamp(3rem,9vw,6.2rem)] leading-[0.95] text-terracotta">
+          Beleza solar,<br>
+          <span class="italic font-medium text-sienna">feita para durar</span><br>
+          o dia inteiro.
+        </h1>
+        <p class="reveal mt-7 max-w-xl mx-auto lg:mx-0 text-[1.08rem] text-ink/85 leading-relaxed">
+          Maquiagem e penteados de alta performance para noivas e ocasiões especiais. A técnica <em class="not-italic text-deep-teal font-normal">Second Skin</em> revela a sua pele real — radiante sob a luz natural e impecável diante das câmeras, mesmo sob o sol e a maresia do litoral.
+        </p>
+        <div class="reveal mt-9 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a href="#contato" class="btn btn-primary">
+            Solicitar orçamento
+          </a>
+          <a href="#contato" class="btn btn-ghost">Agendar atendimento</a>
+        </div>
+        <div class="reveal mt-10 flex items-center gap-7 justify-center lg:justify-start text-sm text-ink/70">
+          <div><span class="block font-display text-3xl text-terracotta font-semibold leading-none">16+</span>anos de carreira</div>
+          <div class="h-9 w-px bg-rose/40"></div>
+          <div><span class="block font-display text-3xl text-terracotta font-semibold leading-none">MAC</span>Cosmetics Europa</div>
+          <div class="h-9 w-px bg-rose/40"></div>
+          <div><span class="block font-display text-3xl text-terracotta font-semibold leading-none">3</span>destinos de atendimento</div>
+        </div>
+      </div>
+
+      <!-- Logo / illustration -->
+      <div class="relative reveal flex justify-center">
+        <div class="wash" style="width:108%;height:108%;top:-4%;left:-4%;background:radial-gradient(circle,#FDF7EE,transparent 60%);opacity:.9;filter:blur(30px);"></div>
+        <img src="brand_assets/logo.jpeg" alt="Ilustração em aquarela do Arih Ateliê: rosto feminino com cabelos ao vento, sol e onda do mar" class="floaty relative z-10 w-[78%] max-w-md lg:max-w-lg mix-blend-multiply" />
+      </div>
+    </div>
+
+    <!-- scroll cue -->
+    <a href="#sobre" class="absolute bottom-7 left-1/2 -translate-x-1/2 z-10 text-teal/70 hover:text-terracotta transition-colors" aria-label="Rolar para a próxima seção">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" class="animate-bounce" style="animation-duration:2.4s"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+    </a>
+  </section>
+
+  <!-- ============ SOBRE ============ -->
+  <section id="sobre" class="relative py-[var(--space)] overflow-hidden">
+    <div class="wash" style="width:38vw;height:38vw;top:8%;left:-14%;background:radial-gradient(circle,#B0CAD0,transparent 66%);opacity:.4;"></div>
+
+    <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10 grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+      <!-- portrait -->
+      <div class="reveal order-2 lg:order-1 relative">
+        <div class="wash" style="width:90%;height:90%;bottom:-6%;left:-8%;background:radial-gradient(circle,#CEC4B2,transparent 65%);opacity:.7;"></div>
+        <div class="wc-frame relative z-10 rounded-[2rem] overflow-hidden ring-1 ring-rose/25 shadow-[0_40px_80px_-40px_rgba(80,124,134,.5)] max-w-md mx-auto">
+          <img src="brand_assets/maquiadora.jpeg" alt="Retrato em aquarela de Arih, fundadora do Arih Ateliê" class="w-full aspect-[3/4]" />
+        </div>
+        <div class="relative z-20 -mt-10 ml-auto mr-2 lg:mr-8 max-w-[16rem] card rounded-2xl px-5 py-4 text-center">
+          <p class="script-accent text-2xl leading-none">Arih</p>
+          <p class="text-xs text-ink/70 mt-1">Fundadora · Maquiadora de alta performance</p>
+        </div>
+      </div>
+
+      <!-- text -->
+      <div class="order-1 lg:order-2">
+        <p class="eyebrow reveal">Sobre o ateliê</p>
+        <h2 class="reveal mt-4 text-[clamp(2.2rem,4.6vw,3.6rem)]">
+          <span class="brush-underline">Onde o rigor das passarelas</span><br>encontra a leveza do litoral.
+        </h2>
+        <p class="reveal mt-7 text-ink/85 leading-relaxed">
+          O Arih Ateliê nasce da união entre o rigor técnico das passarelas internacionais e a leveza orgânica do mar. Fundado por Arih, maquiadora de alta performance há mais de 16 anos, com trajetória consolidada na <strong class="font-medium text-deep-teal">MAC Cosmetics Europa</strong>, docente do Senac SP e integrante da equipe de <strong class="font-medium text-deep-teal">Celso Kamura</strong>.
+        </p>
+        <p class="reveal mt-4 text-ink/85 leading-relaxed">
+          Hoje, toda essa bagagem internacional desembarca em Ilhabela — o ponto de encontro entre a sofisticação urbana e o frescor solar da ilha.
+        </p>
+
+        <div class="reveal mt-9 grid sm:grid-cols-3 gap-4">
+          <div class="card rounded-2xl p-5">
+            <p class="font-display text-3xl text-terracotta font-semibold">Europa</p>
+            <p class="text-xs text-ink/70 mt-1 leading-snug">Noivas e madrinhas atendidas em Portugal e além</p>
+          </div>
+          <div class="card rounded-2xl p-5">
+            <p class="font-display text-3xl text-terracotta font-semibold">Senac SP</p>
+            <p class="text-xs text-ink/70 mt-1 leading-snug">Docente nas áreas de moda e beleza</p>
+          </div>
+          <div class="card rounded-2xl p-5">
+            <p class="font-display text-3xl text-terracotta font-semibold">Mestra</p>
+            <p class="text-xs text-ink/70 mt-1 leading-snug">Em Design pela Universidade Lusófona, Lisboa</p>
+          </div>
+        </div>
+
+        <blockquote class="reveal mt-9 border-l-2 border-teal/50 pl-5 font-display italic text-[1.35rem] text-deep-teal leading-snug">
+          “A maquiagem não deve ser uma máscara, mas uma extensão da luz que cada noiva já carrega dentro de si.”
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DIFERENCIAIS ============ -->
+  <section class="relative py-[var(--space)] overflow-hidden bg-paper-deep/50">
+    <div class="wash" style="width:42vw;height:42vw;top:-10%;right:-12%;background:radial-gradient(circle,#AB918F,transparent 68%);opacity:.3;"></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="eyebrow reveal">Nossos diferenciais</p>
+        <h2 class="reveal mt-4 text-[clamp(2.2rem,4.6vw,3.4rem)]">A técnica <span class="italic text-sienna">Second Skin</span></h2>
+        <p class="reveal mt-5 text-ink/80">O verdadeiro luxo é mostrar a beleza da pele. Cada detalhe é pensado para resistir ao sol, à umidade e à maresia — do “sim” ao nascer do sol.</p>
+      </div>
+
+      <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- card -->
+        <div class="reveal card rounded-[1.75rem] p-7">
+          <div class="h-12 w-12 rounded-2xl flex items-center justify-center text-teal mb-5" style="background:rgba(176,202,208,.4)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5c-3 4-6 6.5-6 10a6 6 0 0 0 12 0c0-3.5-3-6-6-10Z"/></svg>
+          </div>
+          <h3 class="text-2xl">Pele real, radiante</h3>
+          <p class="mt-2 text-sm text-ink/75 leading-relaxed">Hidratação profunda e cobertura inteligente e localizada, preservando a textura natural mesmo sob lentes de alta definição.</p>
+        </div>
+        <div class="reveal card rounded-[1.75rem] p-7">
+          <div class="h-12 w-12 rounded-2xl flex items-center justify-center text-terracotta mb-5" style="background:rgba(189,137,74,.22)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+          </div>
+          <h3 class="text-2xl">Resistência à maresia</h3>
+          <p class="mt-2 text-sm text-ink/75 leading-relaxed">Maquiagem de longa duração desenvolvida para o microclima litorâneo, garantindo acabamento impecável o dia inteiro.</p>
+        </div>
+        <div class="reveal card rounded-[1.75rem] p-7">
+          <div class="h-12 w-12 rounded-2xl flex items-center justify-center text-deep-teal mb-5" style="background:rgba(80,124,134,.2)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 16.8 6.9 21l1.2-5.6L4 11.6l5.6-.6L12 3Z"/></svg>
+          </div>
+          <h3 class="text-2xl">Atendimento de luxo</h3>
+          <p class="mt-2 text-sm text-ink/75 leading-relaxed">Cada atendimento é um projeto único, unindo visagismo, moda e coloração pessoal à essência de cada mulher.</p>
+        </div>
+        <div class="reveal card rounded-[1.75rem] p-7">
+          <div class="h-12 w-12 rounded-2xl flex items-center justify-center text-rose mb-5" style="background:rgba(171,145,143,.28)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6L12 21l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z"/></svg>
+          </div>
+          <h3 class="text-2xl">Biossegurança</h3>
+          <p class="mt-2 text-sm text-ink/75 leading-relaxed">Nenhum produto aplicado diretamente do frasco. Utilizamos descartáveis e manipulação higiênica em todos os atendimentos.</p>
+        </div>
+        <div class="reveal card rounded-[1.75rem] p-7">
+          <div class="h-12 w-12 rounded-2xl flex items-center justify-center text-teal mb-5" style="background:rgba(176,202,208,.4)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 18v2M16 18v2"/></svg>
+          </div>
+          <h3 class="text-2xl">Produtos de alta tecnologia</h3>
+          <p class="mt-2 text-sm text-ink/75 leading-relaxed">MAC, Dior, Laura Mercier, Nars, Kryolan e outras marcas premium compõem a nossa maleta de maquiagem e penteados.</p>
+        </div>
+        <div class="reveal card rounded-[1.75rem] p-7">
+          <div class="h-12 w-12 rounded-2xl flex items-center justify-center text-sienna mb-5" style="background:rgba(168,94,51,.18)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10a7 7 0 0 1 14 0c0 5.6-7 10-7 10Z"/><circle cx="12" cy="11" r="2.4"/></svg>
+          </div>
+          <h3 class="text-2xl">Ilhabela e região</h3>
+          <p class="mt-2 text-sm text-ink/75 leading-relaxed">Especialistas em Destination Weddings, atendendo na ilha, em São Paulo e em Cascais, Portugal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVIÇOS ============ -->
+  <section id="servicos" class="relative py-[var(--space)] overflow-hidden">
+    <div class="wash" style="width:40vw;height:40vw;top:4%;left:-14%;background:radial-gradient(circle,#B0CAD0,transparent 66%);opacity:.4;"></div>
+    <div class="wash" style="width:36vw;height:36vw;bottom:2%;right:-12%;background:radial-gradient(circle,#BD894A,transparent 68%);opacity:.22;"></div>
+
+    <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="eyebrow reveal">Serviços</p>
+        <h2 class="reveal mt-4 text-[clamp(2.2rem,4.6vw,3.6rem)]">Uma experiência <span class="italic text-sienna">sob medida</span></h2>
+        <p class="reveal mt-5 text-ink/80">Do Destination Wedding ao Beauty on Demand, cada serviço é desenhado para revelar a sua melhor versão.</p>
+      </div>
+
+      <!-- DESTINATION WEDDING -->
+      <div class="mt-16">
+        <div class="reveal flex items-center gap-4 mb-7">
+          <span class="font-display text-3xl text-terracotta font-semibold">Destination Wedding</span>
+          <span class="flex-1 h-px bg-gradient-to-r from-rose/50 to-transparent"></span>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <article class="reveal card rounded-[1.5rem] p-7 flex flex-col">
+            <span class="eyebrow !text-teal !text-[0.62rem]">Noiva</span>
+            <h3 class="text-2xl mt-2">Beleza completa da noiva</h3>
+            <p class="mt-2 text-sm text-ink/75 leading-relaxed flex-1">Maquiagem e penteado com teste prévio (bridal preview). Ouvimos seus desejos e definimos juntas o visual final, coerente com a sua história.</p>
+            <span class="mt-5 text-xs text-teal/90 tracking-wide">Maquiagem + penteado · com teste</span>
+          </article>
+          <article class="reveal card rounded-[1.5rem] p-7 flex flex-col">
+            <span class="eyebrow !text-teal !text-[0.62rem]">Noiva · Premium</span>
+            <h3 class="text-2xl mt-2">Beleza completa + coloração pessoal</h3>
+            <p class="mt-2 text-sm text-ink/75 leading-relaxed flex-1">Integra a consultoria de imagem ao seu teste. Você recebe sua cartela de cores e um dossiê digital exclusivo, guia para suas escolhas de beleza, joias e vestuário.</p>
+            <span class="mt-5 text-xs text-teal/90 tracking-wide">Com dossiê digital + cartela de cores</span>
+          </article>
+          <article class="reveal card rounded-[1.5rem] p-7 flex flex-col">
+            <span class="eyebrow !text-teal !text-[0.62rem]">Noiva</span>
+            <h3 class="text-2xl mt-2">Maquiagem da noiva</h3>
+            <p class="mt-2 text-sm text-ink/75 leading-relaxed flex-1">Para noivas que priorizam um olhar técnico e artístico. Um design de beleza sob medida, baseado em conceitos de visagismo e alta performance.</p>
+            <span class="mt-5 text-xs text-teal/90 tracking-wide">Com teste · 1h a 1h30</span>
+          </article>
+          <article class="reveal card rounded-[1.5rem] p-7 flex flex-col">
+            <span class="eyebrow !text-teal !text-[0.62rem]">Noiva</span>
+            <h3 class="text-2xl mt-2">Penteado da noiva</h3>
+            <p class="mt-2 text-sm text-ink/75 leading-relaxed flex-1">A experiência focada exclusivamente no penteado, pensado como moldura para o rosto e em harmonia com o vestido e o clima do casamento.</p>
+            <span class="mt-5 text-xs text-teal/90 tracking-wide">Com teste · 1h a 1h30</span>
+          </article>
+          <article class="reveal card rounded-[1.5rem] p-7 flex flex-col">
+            <span class="eyebrow !text-teal !text-[0.62rem]">Madrinhas</span>
+            <h3 class="text-2xl mt-2">Beleza completa da madrinha</h3>
+            <p class="mt-2 text-sm text-ink/75 leading-relaxed flex-1">Maquiagem e penteado desenhados para criar harmonia visual entre o grupo, respeitando a individualidade de cada mulher.</p>
+            <span class="mt-5 text-xs text-teal/90 tracking-wide">Maquiagem + penteado · 1h a 1h30</span>
+          </article>
+          <article class="reveal card rounded-[1.5rem] p-7 flex flex-col">
+            <span class="eyebrow !text-teal !text-[0.62rem]">Noivo</span>
+            <h3 class="text-2xl mt-2">Grooming do noivo</h3>
+            <p class="mt-2 text-sm text-ink/75 leading-relaxed flex-1">Camuflagem estratégica e controle de brilho para uma aparência descansada, saudável e, acima de tudo, imperceptível.</p>
+            <span class="mt-5 text-xs text-teal/90 tracking-wide">30 a 40 min</span>
+          </article>
+        </div>
+      </div>
+
+      <!-- SERVIÇOS ADICIONAIS -->
+      <div class="mt-16">
+        <div class="reveal flex items-center gap-4 mb-7">
+          <span class="font-display text-3xl text-terracotta font-semibold">Serviços adicionais do casamento</span>
+          <span class="flex-1 h-px bg-gradient-to-r from-rose/50 to-transparent"></span>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <article class="reveal card rounded-[1.5rem] p-7 flex flex-col">
+            <span class="eyebrow !text-teal !text-[0.62rem]">Pós-cerimônia</span>
+            <h3 class="text-2xl mt-2">Retoque pós-cerimônia</h3>
+            <p class="mt-2 text-sm text-ink/75 leading-relaxed flex-1">Controle de brilho, retoque do batom e ajuste do penteado para a sua entrada triunfal na recepção e as fotos sob o pôr do sol.</p>
+            <span class="mt-5 text-xs text-teal/90 tracking-wide">20 a 30 min</span>
+          </article>
+          <article class="reveal card rounded-[1.5rem] p-7 flex flex-col">
+            <span class="eyebrow !text-teal !text-[0.62rem]">Second look</span>
+            <h3 class="text-2xl mt-2">Mudança de look</h3>
+            <p class="mt-2 text-sm text-ink/75 leading-relaxed flex-1">Alteração completa de maquiagem e penteado entre a cerimônia e a festa — ideal para quem deseja atmosferas diferentes ou tem dois vestidos.</p>
+            <span class="mt-5 text-xs text-teal/90 tracking-wide">30 a 40 min</span>
+          </article>
+          <article class="reveal card rounded-[1.5rem] p-7 flex flex-col">
+            <span class="eyebrow !text-teal !text-[0.62rem]">Pré-wedding</span>
+            <h3 class="text-2xl mt-2">Ensaio pré-wedding</h3>
+            <p class="mt-2 text-sm text-ink/75 leading-relaxed flex-1">Beleza leve e autêntica para os noivos, com acompanhamento técnico durante toda a sessão, no estúdio ou ao ar livre.</p>
+            <span class="mt-5 text-xs text-teal/90 tracking-wide">Casal · sessão completa</span>
+          </article>
+        </div>
+      </div>
+
+      <!-- BEAUTY ON DEMAND -->
+      <div class="mt-16">
+        <div class="reveal flex items-center gap-4 mb-7">
+          <span class="font-display text-3xl text-terracotta font-semibold">Beauty on Demand</span>
+          <span class="flex-1 h-px bg-gradient-to-r from-rose/50 to-transparent"></span>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <article class="reveal card rounded-[1.5rem] p-7 flex flex-col">
+            <span class="eyebrow !text-teal !text-[0.62rem]">Convidadas</span>
+            <h3 class="text-2xl mt-2">Maquiagem social</h3>
+            <p class="mt-2 text-sm text-ink/75 leading-relaxed flex-1">Para galas, festas na praia ou celebrações especiais. Pele impecável e acabamento de alta definição que resiste às câmeras e à iluminação de eventos.</p>
+            <span class="mt-5 text-xs text-teal/90 tracking-wide">40 min a 1h</span>
+          </article>
+          <article class="reveal card rounded-[1.5rem] p-7 flex flex-col">
+            <span class="eyebrow !text-teal !text-[0.62rem]">Convidadas</span>
+            <h3 class="text-2xl mt-2">Penteado</h3>
+            <p class="mt-2 text-sm text-ink/75 leading-relaxed flex-1">Designs criados com olhar visagista, que harmonizam com suas proporções faciais, o decote do traje e a proposta do evento.</p>
+            <span class="mt-5 text-xs text-teal/90 tracking-wide">40 min a 1h</span>
+          </article>
+          <article class="reveal card rounded-[1.5rem] p-7 flex flex-col">
+            <span class="eyebrow !text-teal !text-[0.62rem]">Statement</span>
+            <h3 class="text-2xl mt-2">Maxi Makeup</h3>
+            <p class="mt-2 text-sm text-ink/75 leading-relaxed flex-1">Inspirada na estética audaciosa de Euphoria. Brilho, texturas intensas e design gráfico para quem quer a maquiagem como protagonista do look.</p>
+            <span class="mt-5 text-xs text-teal/90 tracking-wide">1h a 1h30</span>
+          </article>
+        </div>
+      </div>
+
+      <!-- WORKSHOPS + CONSULTORIA -->
+      <div class="mt-16 grid lg:grid-cols-2 gap-6">
+        <div>
+          <div class="reveal flex items-center gap-4 mb-7">
+            <span class="font-display text-3xl text-terracotta font-semibold">Workshops</span>
+            <span class="flex-1 h-px bg-gradient-to-r from-rose/50 to-transparent"></span>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <article class="reveal card rounded-[1.5rem] p-7 flex flex-col">
+              <h3 class="text-xl">Automaquiagem particular</h3>
+              <p class="mt-2 text-sm text-ink/75 leading-relaxed flex-1">Experiência imersiva de 3h com visagismo aplicado ao seu rosto, usando os seus próprios produtos.</p>
+            </article>
+            <article class="reveal card rounded-[1.5rem] p-7 flex flex-col">
+              <h3 class="text-xl">Automaquiagem em grupo</h3>
+              <p class="mt-2 text-sm text-ink/75 leading-relaxed flex-1">Aula prática de 4h, de 2 a 10 pessoas, com técnica profissional e curadoria de produtos de luxo.</p>
+            </article>
+          </div>
+        </div>
+        <div>
+          <div class="reveal flex items-center gap-4 mb-7">
+            <span class="font-display text-3xl text-terracotta font-semibold">Consultoria de Imagem</span>
+            <span class="flex-1 h-px bg-gradient-to-r from-rose/50 to-transparent"></span>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <article class="reveal card rounded-[1.5rem] p-7 flex flex-col">
+              <h3 class="text-xl">Coloração pessoal</h3>
+              <p class="mt-2 text-sm text-ink/75 leading-relaxed flex-1">Identificamos a sua paleta ideal e entregamos cartela de cores física e dossiê digital completo.</p>
+            </article>
+            <article class="reveal card rounded-[1.5rem] p-7 flex flex-col">
+              <h3 class="text-xl">Consultoria de estilo</h3>
+              <p class="mt-2 text-sm text-ink/75 leading-relaxed flex-1">Três encontros para alinhar cores, cortes e texturas que valorizam o seu corpo e a sua essência.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal mt-14 text-center">
+        <a href="#contato" class="btn btn-primary">Quero saber mais sobre os serviços</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PORTFÓLIO ============ -->
+  <section id="portfolio" class="relative py-[var(--space)] overflow-hidden bg-paper-deep/50">
+    <div class="wash" style="width:40vw;height:40vw;top:-8%;right:-12%;background:radial-gradient(circle,#AB918F,transparent 68%);opacity:.3;"></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="eyebrow reveal">Portfólio</p>
+        <h2 class="reveal mt-4 text-[clamp(2.2rem,4.6vw,3.6rem)]">Belezas que <span class="italic text-sienna">dialogam com a luz</span></h2>
+        <p class="reveal mt-5 text-ink/80">Uma seleção de produções de noivas, casais e atendimentos especiais — entre Ilhabela e Cascais.</p>
+      </div>
+
+      <div class="mt-14 grid grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-5 auto-rows-[180px] lg:auto-rows-[220px]">
+        <figure class="reveal wc-frame group col-span-2 lg:col-span-7 lg:row-span-2 rounded-[1.75rem] overflow-hidden ring-1 ring-rose/20 relative">
+          <img src="brand_assets/maquiadora-maquiando.jpeg" alt="Aquarela de Arih maquiando uma noiva ao pôr do sol em Ilhabela" class="transition-transform duration-700 group-hover:scale-105" />
+          <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-deep-teal/70 to-transparent p-5 text-paper text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500">Maquiagem de noiva · Ilhabela</figcaption>
+        </figure>
+        <figure class="reveal wc-frame group col-span-2 lg:col-span-5 rounded-[1.75rem] overflow-hidden ring-1 ring-rose/20 relative">
+          <img src="brand_assets/casal-aquarela.jpeg" alt="Aquarela de um casal de noivos sob arco floral" class="transition-transform duration-700 group-hover:scale-105" />
+          <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-deep-teal/70 to-transparent p-5 text-paper text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500">Destination Wedding</figcaption>
+        </figure>
+        <figure class="reveal wc-frame group lg:col-span-3 rounded-[1.75rem] overflow-hidden ring-1 ring-rose/20 relative">
+          <img src="brand_assets/teste-de-cor.jpeg" alt="Aquarela de sessão de coloração pessoal com cartela de cores" class="transition-transform duration-700 group-hover:scale-105" />
+          <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-deep-teal/70 to-transparent p-4 text-paper text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500">Coloração pessoal</figcaption>
+        </figure>
+        <figure class="reveal wc-frame group lg:col-span-2 rounded-[1.75rem] overflow-hidden ring-1 ring-rose/20 relative">
+          <img src="https://placehold.co/400x440/CEC4B2/8A4B2D?text=Penteado" alt="Penteado de noiva em aquarela" class="transition-transform duration-700 group-hover:scale-105" />
+        </figure>
+      </div>
+      <p class="reveal mt-6 text-center text-xs text-ink/50 italic">Editorial de noivas · Cascais, Portugal</p>
+    </div>
+  </section>
+
+  <!-- ============ COMO FUNCIONA ============ -->
+  <section id="processo" class="relative py-[var(--space)] overflow-hidden">
+    <div class="wash" style="width:38vw;height:38vw;top:10%;left:-12%;background:radial-gradient(circle,#B0CAD0,transparent 66%);opacity:.4;"></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="eyebrow reveal">Como funciona</p>
+        <h2 class="reveal mt-4 text-[clamp(2.2rem,4.6vw,3.6rem)]">Do primeiro contato ao <span class="italic text-sienna">grande dia</span></h2>
+      </div>
+
+      <ol class="mt-16 relative grid md:grid-cols-5 gap-10 md:gap-6">
+        <!-- connecting line -->
+        <div class="hidden md:block absolute top-7 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-rose/40 to-transparent"></div>
+        <li class="reveal relative text-center md:text-left">
+          <div class="mx-auto md:mx-0 relative z-10 h-14 w-14 rounded-full bg-paper border-2 border-teal/40 flex items-center justify-center font-display text-2xl text-terracotta font-semibold">1</div>
+          <h3 class="text-xl mt-4">Contato inicial</h3>
+          <p class="text-sm text-ink/75 mt-1.5 leading-relaxed">Você nos escreve pelo WhatsApp ou formulário contando sua data e seu sonho.</p>
+        </li>
+        <li class="reveal relative text-center md:text-left">
+          <div class="mx-auto md:mx-0 relative z-10 h-14 w-14 rounded-full bg-paper border-2 border-teal/40 flex items-center justify-center font-display text-2xl text-terracotta font-semibold">2</div>
+          <h3 class="text-xl mt-4">Conversa & escuta</h3>
+          <p class="text-sm text-ink/75 mt-1.5 leading-relaxed">Entendemos seus desejos, referências e a essência que você quer comunicar.</p>
+        </li>
+        <li class="reveal relative text-center md:text-left">
+          <div class="mx-auto md:mx-0 relative z-10 h-14 w-14 rounded-full bg-paper border-2 border-teal/40 flex items-center justify-center font-display text-2xl text-terracotta font-semibold">3</div>
+          <h3 class="text-xl mt-4">Teste & planejamento</h3>
+          <p class="text-sm text-ink/75 mt-1.5 leading-relaxed">No bridal preview experimentamos, ajustamos e definimos o visual final.</p>
+        </li>
+        <li class="reveal relative text-center md:text-left">
+          <div class="mx-auto md:mx-0 relative z-10 h-14 w-14 rounded-full bg-paper border-2 border-teal/40 flex items-center justify-center font-display text-2xl text-terracotta font-semibold">4</div>
+          <h3 class="text-xl mt-4">Dia do atendimento</h3>
+          <p class="text-sm text-ink/75 mt-1.5 leading-relaxed">Execução impecável com técnicas de alta performance e biossegurança.</p>
+        </li>
+        <li class="reveal relative text-center md:text-left">
+          <div class="mx-auto md:mx-0 relative z-10 h-14 w-14 rounded-full bg-paper border-2 border-teal/40 flex items-center justify-center font-display text-2xl text-terracotta font-semibold">5</div>
+          <h3 class="text-xl mt-4">Resultado final</h3>
+          <p class="text-sm text-ink/75 mt-1.5 leading-relaxed">Você caminha ao altar segura, com a sua melhor versão — radiante até o fim da festa.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ DEPOIMENTOS ============ -->
+  <section id="depoimentos" class="relative py-[var(--space)] overflow-hidden bg-paper-deep/50">
+    <div class="wash" style="width:40vw;height:40vw;bottom:-10%;left:-12%;background:radial-gradient(circle,#CEC4B2,transparent 66%);opacity:.55;"></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="eyebrow reveal">Depoimentos</p>
+        <h2 class="reveal mt-4 text-[clamp(2.2rem,4.6vw,3.6rem)]">O que as noivas <span class="italic text-sienna">dizem</span></h2>
+      </div>
+
+      <div class="mt-14 grid md:grid-cols-3 gap-6">
+        <figure class="reveal card rounded-[1.75rem] p-8">
+          <div class="flex gap-1 text-gold mb-4" aria-label="5 de 5 estrelas">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 16.8 6.9 21l1.2-5.6L4 11.6l5.6-.6L12 3Z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 16.8 6.9 21l1.2-5.6L4 11.6l5.6-.6L12 3Z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 16.8 6.9 21l1.2-5.6L4 11.6l5.6-.6L12 3Z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 16.8 6.9 21l1.2-5.6L4 11.6l5.6-.6L12 3Z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 16.8 6.9 21l1.2-5.6L4 11.6l5.6-.6L12 3Z"/></svg>
+          </div>
+          <blockquote class="font-display italic text-xl text-deep-teal leading-snug">“Casei na praia e tinha pavor de a maquiagem derreter. No fim da festa eu estava igual ao início. A Arih é mágica.”</blockquote>
+          <figcaption class="mt-5 flex items-center gap-3">
+            <span class="h-10 w-10 rounded-full bg-rose/30 flex items-center justify-center font-display text-lg text-terracotta">M</span>
+            <span><span class="block text-sm font-medium text-ink">Marina Toledo</span><span class="block text-xs text-ink/60">Noiva · Ilhabela</span></span>
+          </figcaption>
+        </figure>
+        <figure class="reveal card rounded-[1.75rem] p-8">
+          <div class="flex gap-1 text-gold mb-4" aria-label="5 de 5 estrelas">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 16.8 6.9 21l1.2-5.6L4 11.6l5.6-.6L12 3Z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 16.8 6.9 21l1.2-5.6L4 11.6l5.6-.6L12 3Z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 16.8 6.9 21l1.2-5.6L4 11.6l5.6-.6L12 3Z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 16.8 6.9 21l1.2-5.6L4 11.6l5.6-.6L12 3Z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 16.8 6.9 21l1.2-5.6L4 11.6l5.6-.6L12 3Z"/></svg>
+          </div>
+          <blockquote class="font-display italic text-xl text-deep-teal leading-snug">“A técnica Second Skin é tudo. Nas fotos minha pele parecia pele de verdade, leve e luminosa. Me senti eu mesma, só que radiante.”</blockquote>
+          <figcaption class="mt-5 flex items-center gap-3">
+            <span class="h-10 w-10 rounded-full bg-mist/40 flex items-center justify-center font-display text-lg text-deep-teal">C</span>
+            <span><span class="block text-sm font-medium text-ink">Carolina Bastos</span><span class="block text-xs text-ink/60">Noiva · São Paulo</span></span>
+          </figcaption>
+        </figure>
+        <figure class="reveal card rounded-[1.75rem] p-8">
+          <div class="flex gap-1 text-gold mb-4" aria-label="5 de 5 estrelas">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 16.8 6.9 21l1.2-5.6L4 11.6l5.6-.6L12 3Z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 16.8 6.9 21l1.2-5.6L4 11.6l5.6-.6L12 3Z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 16.8 6.9 21l1.2-5.6L4 11.6l5.6-.6L12 3Z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 16.8 6.9 21l1.2-5.6L4 11.6l5.6-.6L12 3Z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 16.8 6.9 21l1.2-5.6L4 11.6l5.6-.6L12 3Z"/></svg>
+          </div>
+          <blockquote class="font-display italic text-xl text-deep-teal leading-snug">“Contratei a Arih para mim e para as madrinhas. O grupo todo ficou harmônico, e cada uma com a sua personalidade. Profissionalismo impecável.”</blockquote>
+          <figcaption class="mt-5 flex items-center gap-3">
+            <span class="h-10 w-10 rounded-full bg-sand/60 flex items-center justify-center font-display text-lg text-terracotta">B</span>
+            <span><span class="block text-sm font-medium text-ink">Beatriz Andrade</span><span class="block text-xs text-ink/60">Noiva · Cascais</span></span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="faq" class="relative py-[var(--space)] overflow-hidden">
+    <div class="wash" style="width:36vw;height:36vw;top:6%;right:-12%;background:radial-gradient(circle,#B0CAD0,transparent 66%);opacity:.4;"></div>
+    <div class="relative z-10 mx-auto max-w-3xl px-5 lg:px-10">
+      <div class="text-center">
+        <p class="eyebrow reveal">Dúvidas frequentes</p>
+        <h2 class="reveal mt-4 text-[clamp(2.2rem,4.6vw,3.6rem)]">Perguntas <span class="italic text-sienna">comuns</span></h2>
+      </div>
+
+      <div class="mt-12 space-y-4">
+        <details class="reveal card rounded-2xl px-6 py-1 group">
+          <summary class="flex items-center justify-between gap-4 py-5 text-lg font-display text-deep-teal font-medium">
+            Vocês atendem apenas em Ilhabela?
+            <span class="faq-icon shrink-0 text-terracotta"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <p class="pb-5 text-sm text-ink/80 leading-relaxed">Ilhabela é a nossa base, mas atendemos em toda a região, em São Paulo e também em Cascais, Portugal. Para Destination Weddings em outros destinos, fale conosco para verificar disponibilidade e deslocamento.</p>
+        </details>
+        <details class="reveal card rounded-2xl px-6 py-1">
+          <summary class="flex items-center justify-between gap-4 py-5 text-lg font-display text-deep-teal font-medium">
+            É possível realizar teste de maquiagem antes do casamento?
+            <span class="faq-icon shrink-0 text-terracotta"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <p class="pb-5 text-sm text-ink/80 leading-relaxed">Sim. O bridal preview é parte essencial do atendimento de noiva. Em uma data reservada só para você, experimentamos, ajustamos e definimos juntas o visual final.</p>
+        </details>
+        <details class="reveal card rounded-2xl px-6 py-1">
+          <summary class="flex items-center justify-between gap-4 py-5 text-lg font-display text-deep-teal font-medium">
+            Quanto tempo dura o atendimento da noiva?
+            <span class="faq-icon shrink-0 text-terracotta"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <p class="pb-5 text-sm text-ink/80 leading-relaxed">A beleza completa da noiva (maquiagem e penteado) leva, em média, de 2h a 2h30. Serviços individuais de maquiagem ou penteado variam entre 1h e 1h30.</p>
+        </details>
+        <details class="reveal card rounded-2xl px-6 py-1">
+          <summary class="flex items-center justify-between gap-4 py-5 text-lg font-display text-deep-teal font-medium">
+            Como funciona o agendamento?
+            <span class="faq-icon shrink-0 text-terracotta"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <p class="pb-5 text-sm text-ink/80 leading-relaxed">Basta entrar em contato pelo WhatsApp ou pelo formulário. Conversamos sobre a sua data, suas necessidades e enviamos uma proposta personalizada. Recomendamos reservar com antecedência, principalmente em alta temporada.</p>
+        </details>
+        <details class="reveal card rounded-2xl px-6 py-1">
+          <summary class="flex items-center justify-between gap-4 py-5 text-lg font-display text-deep-teal font-medium">
+            Vocês atendem grupos de madrinhas e convidadas?
+            <span class="faq-icon shrink-0 text-terracotta"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <p class="pb-5 text-sm text-ink/80 leading-relaxed">Sim. Atendemos madrinhas, mães e convidadas, criando harmonia visual entre o grupo e respeitando a individualidade de cada uma. Para grupos, montamos um cronograma para que tudo flua com tranquilidade no dia.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTATO ============ -->
+  <section id="contato" class="relative py-[var(--space)] overflow-hidden bg-paper-deep/60">
+    <div class="wash" style="width:44vw;height:44vw;top:-12%;left:-10%;background:radial-gradient(circle,#B0CAD0,transparent 66%);opacity:.45;"></div>
+    <div class="wash" style="width:38vw;height:38vw;bottom:-12%;right:-12%;background:radial-gradient(circle,#BD894A,transparent 68%);opacity:.25;"></div>
+
+    <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+      <div>
+        <p class="eyebrow reveal">Contato</p>
+        <h2 class="reveal mt-4 text-[clamp(2.2rem,4.6vw,3.8rem)]">Vamos criar a sua <span class="italic text-sienna">melhor versão</span></h2>
+        <p class="reveal mt-5 text-ink/80 max-w-md">Conte-nos sobre a sua data e o seu sonho. Responderemos com uma proposta personalizada, pensada especialmente para você.</p>
+
+        <div class="reveal mt-9 space-y-4">
+          <a href="https://wa.me/5512000000000?text=Ol%C3%A1%20Arih%2C%20gostaria%20de%20um%20or%C3%A7amento" target="_blank" rel="noopener" class="group flex items-center gap-4 card rounded-2xl p-5 hover:no-underline">
+            <span class="h-12 w-12 rounded-xl bg-[#25D366]/15 text-[#128C7E] flex items-center justify-center shrink-0">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.68-6.13A11.86 11.86 0 0 1 .16 11.9C.16 5.34 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.41c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.69-1.45L.06 24Zm6.6-3.8c1.68.99 3.28 1.58 5.4 1.58 5.45 0 9.89-4.43 9.89-9.88 0-2.64-1.03-5.12-2.9-6.99a9.82 9.82 0 0 0-6.98-2.9c-5.46 0-9.9 4.44-9.9 9.89 0 1.87.52 3.28 1.4 4.75l-.99 3.62 3.08-1.07Zm11.39-5.31c-.07-.12-.27-.2-.57-.35-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.69.25-1.28.17-1.41Z"/></svg>
+            </span>
+            <span>
+              <span class="block text-sm font-medium text-ink group-hover:text-terracotta transition-colors">WhatsApp</span>
+              <span class="block text-xs text-ink/60">Resposta rápida · Solicite seu orçamento</span>
+            </span>
+          </a>
+          <a href="https://instagram.com/arihatelie" target="_blank" rel="noopener" class="group flex items-center gap-4 card rounded-2xl p-5 hover:no-underline">
+            <span class="h-12 w-12 rounded-xl bg-rose/15 text-sienna flex items-center justify-center shrink-0">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </span>
+            <span>
+              <span class="block text-sm font-medium text-ink group-hover:text-terracotta transition-colors">@arihatelie</span>
+              <span class="block text-xs text-ink/60">Acompanhe nossos trabalhos no Instagram</span>
+            </span>
+          </a>
+          <div class="flex items-center gap-4 card rounded-2xl p-5">
+            <span class="h-12 w-12 rounded-xl bg-teal/15 text-deep-teal flex items-center justify-center shrink-0">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10a7 7 0 0 1 14 0c0 5.6-7 10-7 10Z"/><circle cx="12" cy="11" r="2.4"/></svg>
+            </span>
+            <span>
+              <span class="block text-sm font-medium text-ink">Ilhabela · São Paulo · Cascais</span>
+              <span class="block text-xs text-ink/60">Atendimento na ilha, na capital e em Portugal</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- form -->
+      <form class="reveal card rounded-[2rem] p-7 sm:p-9" id="contactForm" novalidate>
+        <h3 class="text-2xl mb-6">Solicite seu orçamento</h3>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label for="nome" class="block text-xs font-medium text-ink/80 mb-1.5 tracking-wide">Nome <span class="text-sienna">*</span></label>
+            <input id="nome" name="nome" type="text" required autocomplete="name" placeholder="Seu nome completo" class="w-full rounded-xl px-4 py-3 text-sm" />
+          </div>
+          <div>
+            <label for="telefone" class="block text-xs font-medium text-ink/80 mb-1.5 tracking-wide">WhatsApp <span class="text-sienna">*</span></label>
+            <input id="telefone" name="telefone" type="tel" required autocomplete="tel" placeholder="(12) 90000-0000" class="w-full rounded-xl px-4 py-3 text-sm" />
+          </div>
+        </div>
+        <div class="mt-5">
+          <label for="email" class="block text-xs font-medium text-ink/80 mb-1.5 tracking-wide">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="seu@email.com" class="w-full rounded-xl px-4 py-3 text-sm" />
+        </div>
+        <div class="mt-5 grid sm:grid-cols-2 gap-5">
+          <div>
+            <label for="servico" class="block text-xs font-medium text-ink/80 mb-1.5 tracking-wide">Tipo de atendimento</label>
+            <select id="servico" name="servico" class="w-full rounded-xl px-4 py-3 text-sm bg-white/60 border border-rose/40 focus:outline-none focus:border-teal" style="appearance:none;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 fill=%22none%22 stroke=%22%238A4B2D%22 stroke-width=%222%22%3E%3Cpath d=%22M4 6l4 4 4-4%22/%3E%3C/svg%3E');background-repeat:no-repeat;background-position:right 1rem center;">
+              <option>Noiva (Destination Wedding)</option>
+              <option>Madrinhas / grupo</option>
+              <option>Noivo / grooming</option>
+              <option>Beauty on Demand / evento</option>
+              <option>Consultoria de imagem</option>
+              <option>Workshop</option>
+            </select>
+          </div>
+          <div>
+            <label for="data" class="block text-xs font-medium text-ink/80 mb-1.5 tracking-wide">Data do evento</label>
+            <input id="data" name="data" type="date" class="w-full rounded-xl px-4 py-3 text-sm" />
+          </div>
+        </div>
+        <div class="mt-5">
+          <label for="mensagem" class="block text-xs font-medium text-ink/80 mb-1.5 tracking-wide">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte-nos sobre o seu sonho, local e número de pessoas..." class="w-full rounded-xl px-4 py-3 text-sm resize-none"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary w-full mt-6">Enviar solicitação</button>
+        <p id="formMsg" role="status" aria-live="polite" class="text-sm text-deep-teal text-center mt-4 hidden"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="relative overflow-hidden pt-16 pb-10 border-t border-rose/20">
+    <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
+      <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10">
+        <div>
+          <div class="flex items-center gap-3">
+            <img src="brand_assets/logo.jpeg" alt="Logotipo Arih Ateliê" class="h-12 w-12 rounded-full object-cover ring-1 ring-sand" style="object-position:50% 32%;" />
+            <span class="font-display text-3xl font-semibold text-terracotta">Arih Ateliê</span>
+          </div>
+          <p class="mt-4 text-sm text-ink/70 max-w-xs leading-relaxed">Natural Bridal Beauty. Alta performance, beleza solar e resistência à maresia — do “sim” ao nascer do sol.</p>
+          <p class="script-accent text-xl mt-4">Beauty on Demand · Destination Wedding</p>
+        </div>
+        <nav class="text-sm" aria-label="Navegação do rodapé">
+          <p class="eyebrow !text-[0.6rem] mb-4">Navegação</p>
+          <ul class="space-y-2.5">
+            <li><a href="#sobre" class="nav-link">Sobre</a></li>
+            <li><a href="#servicos" class="nav-link">Serviços</a></li>
+            <li><a href="#portfolio" class="nav-link">Portfólio</a></li>
+            <li><a href="#processo" class="nav-link">Como funciona</a></li>
+            <li><a href="#faq" class="nav-link">Dúvidas</a></li>
+          </ul>
+        </nav>
+        <div class="text-sm">
+          <p class="eyebrow !text-[0.6rem] mb-4">Contato</p>
+          <ul class="space-y-2.5 text-ink/75">
+            <li><a href="https://wa.me/5512000000000" target="_blank" rel="noopener" class="nav-link">WhatsApp</a></li>
+            <li><a href="https://instagram.com/arihatelie" target="_blank" rel="noopener" class="nav-link">@arihatelie</a></li>
+            <li>Ilhabela · São Paulo</li>
+            <li>Cascais · Portugal</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 pt-6 border-t border-rose/20 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-ink/55">
+        <p>© <span id="year"></span> Arih Ateliê. Todos os direitos reservados.</p>
+        <p>Feito com cuidado, em aquarela. ⋄ Ilhabela, Brasil</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/5512000000000?text=Ol%C3%A1%20Arih%2C%20gostaria%20de%20um%20or%C3%A7amento" target="_blank" rel="noopener" aria-label="Falar no WhatsApp" class="float-wa fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-[#25D366] text-white flex items-center justify-center">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.68-6.13A11.86 11.86 0 0 1 .16 11.9C.16 5.34 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.41c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.69-1.45L.06 24Zm6.6-3.8c1.68.99 3.28 1.58 5.4 1.58 5.45 0 9.89-4.43 9.89-9.88 0-2.64-1.03-5.12-2.9-6.99a9.82 9.82 0 0 0-6.98-2.9c-5.46 0-9.9 4.44-9.9 9.89 0 1.87.52 3.28 1.4 4.75l-.99 3.62 3.08-1.07Zm11.39-5.31c-.07-.12-.27-.2-.57-.35-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.69.25-1.28.17-1.41Z"/></svg>
+  </a>
+
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Nav scroll state
+    const nav = document.querySelector('[data-navbar]');
+    const onScroll = () => {
+      if (window.scrollY > 30) {
+        nav.classList.add('bg-paper/85','backdrop-blur-xl','shadow-[0_8px_30px_-12px_rgba(80,124,134,.35)]','ring-1','ring-rose/15');
+      } else {
+        nav.classList.remove('bg-paper/85','backdrop-blur-xl','shadow-[0_8px_30px_-12px_rgba(80,124,134,.35)]','ring-1','ring-rose/15');
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('hidden') === false;
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+
+    // Reveal on scroll (reveal all immediately under automation / reduced motion)
+    const reveals = document.querySelectorAll('.reveal');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (navigator.webdriver || reduceMotion || !('IntersectionObserver' in window)) {
+      reveals.forEach((el) => el.classList.add('in'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      reveals.forEach((el, i) => {
+        el.style.transitionDelay = (Math.min(i % 6, 5) * 70) + 'ms';
+        io.observe(el);
+      });
+    }
+
+    // Form (demo handler)
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const msg = document.getElementById('formMsg');
+      if (!form.checkValidity()) {
+        const firstInvalid = form.querySelector(':invalid');
+        if (firstInvalid) firstInvalid.focus();
+        msg.textContent = 'Por favor, preencha o nome e o WhatsApp para continuar.';
+        msg.classList.remove('hidden','text-deep-teal'); msg.classList.add('text-sienna');
+        return;
+      }
+      msg.textContent = 'Obrigada! Recebemos a sua solicitação e responderemos em breve. ✦';
+      msg.classList.remove('hidden','text-sienna'); msg.classList.add('text-deep-teal');
+      form.reset();
+    });
+  </script>
+</body>
+</html>
