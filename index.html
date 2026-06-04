@@ -57,7 +57,7 @@
       --space: clamp(5rem, 10vw, 9rem);
     }
 
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    html { scroll-behavior: auto; -webkit-text-size-adjust: 100%; } /* Lenis owns smoothing */
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
@@ -189,6 +189,116 @@
 
     .float-wa { box-shadow: 0 12px 28px -10px rgba(15,85,99,.55); transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s; }
     .float-wa:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 18px 34px -12px rgba(15,85,99,.65); }
+
+    /* ============================================================
+       VIDEO SCROLL HERO — watercolor frame scrub
+       ============================================================ */
+    #hero-loader {
+      position: fixed; inset: 0; z-index: 80;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem;
+      background: var(--paper); transition: opacity .8s cubic-bezier(.22,1,.36,1);
+    }
+    #hero-loader.done { opacity: 0; pointer-events: none; }
+    .loader-brand { font-family:"Cormorant Garamond",serif; font-size: clamp(1.9rem,4.5vw,2.8rem); font-weight:600; color: var(--terracotta); letter-spacing:.01em; }
+    .loader-brand span { font-family:"Petit Formal Script",cursive; font-weight:400; color: var(--sienna); }
+    .loader-bar { width: min(240px,60vw); height: 2px; background: rgba(171,145,143,.28); border-radius: 2px; overflow: hidden; }
+    .loader-fill { height:100%; width:0; background: linear-gradient(90deg, var(--teal), var(--terracotta)); transition: width .25s ease; }
+    .loader-pct { font-family:"Jost",sans-serif; font-size:.66rem; letter-spacing:.34em; text-transform:uppercase; color: var(--teal); }
+
+    .hero-master { position: relative; z-index: 5; }
+    .hero-track { height: 240vh; }
+
+    /* fixed video canvas — revealed by circle-wipe */
+    .canvas-wrap {
+      position: fixed; inset: 0; z-index: 2; opacity: 0;
+      clip-path: circle(8% at 50% 46%); pointer-events: none;
+      will-change: clip-path, opacity;
+    }
+    #hero-canvas { display: block; width: 100%; height: 100%; }
+    .canvas-vignette {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(125% 115% at 50% 48%, transparent 52%, rgba(251,246,236,.55) 88%);
+      box-shadow: inset 0 0 160px 30px rgba(251,246,236,.7);
+    }
+
+    /* first screen: brand copy on solid paper */
+    .hero-standalone {
+      position: relative; z-index: 10; min-height: 100svh;
+      display: flex; align-items: center; overflow: hidden;
+      background: var(--paper); padding: 8rem 0 5rem; will-change: opacity;
+    }
+
+    /* oversized scroll marquee */
+    .hero-marquee {
+      position: fixed; left: 0; right: 0; bottom: 7vh; z-index: 3;
+      opacity: 0; pointer-events: none; white-space: nowrap; overflow: hidden;
+      will-change: transform, opacity;
+    }
+    .hero-marquee-text {
+      display: inline-block; font-family:"Cormorant Garamond",serif; font-weight:600; font-style: italic;
+      font-size: 13vw; line-height: 1; letter-spacing:-.02em; color: transparent;
+      -webkit-text-stroke: 1px rgba(138,75,45,.30); text-stroke: 1px rgba(138,75,45,.30);
+    }
+
+    /* caption beats layered over the video */
+    .hero-caption {
+      position: fixed; inset: 0; z-index: 6; display: flex; align-items: center;
+      opacity: 0; pointer-events: none; transition: opacity .55s cubic-bezier(.22,1,.36,1);
+    }
+    .hero-caption.active { opacity: 1; }
+    .hero-caption-inner { position: relative; max-width: min(40vw, 30rem); }
+    .hero-caption-inner::before {
+      content:""; position: absolute; inset: -20% -26%; z-index:-1;
+      background: radial-gradient(74% 86% at 30% 50%, rgba(251,246,236,.92) 0%, rgba(251,246,236,.7) 45%, transparent 74%);
+      filter: blur(12px);
+    }
+    .align-left { margin-left: 6vw; }
+    .align-right { margin-left: auto; margin-right: 6vw; text-align: right; }
+    .align-right .hero-caption-inner::before { background: radial-gradient(74% 86% at 70% 50%, rgba(251,246,236,.92) 0%, rgba(251,246,236,.7) 45%, transparent 74%); }
+    .cap-label { display: inline-block; font-family:"Jost",sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:.34em; font-size:.72rem; color: var(--deep-teal); text-shadow: 0 1px 12px rgba(251,246,236,.98); }
+    .cap-heading { font-family:"Cormorant Garamond",serif; font-weight:600; color: var(--terracotta); font-size: clamp(2.6rem,6vw,4.7rem); line-height:1.02; margin-top:.55rem; text-shadow: 0 2px 30px rgba(251,246,236,.96); }
+    .cap-body { margin-top: 1.1rem; font-size: 1.06rem; line-height: 1.7; color:#473629; font-weight:400; text-shadow: 0 1px 16px rgba(251,246,236,.98), 0 1px 4px rgba(251,246,236,.9); }
+    .align-right .cap-body { margin-left: auto; }
+    .cap-cta { margin-top: 1.9rem; }
+    .hero-caption .cap-cta { pointer-events: auto; }
+
+    /* staggered child reveal + direction variety */
+    .hero-caption .cap-label,
+    .hero-caption .cap-heading,
+    .hero-caption .cap-body,
+    .hero-caption .cap-cta {
+      opacity: 0; transition: opacity .8s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1), clip-path .9s cubic-bezier(.22,1,.36,1);
+    }
+    .hero-caption.from-left  .cap-label, .hero-caption.from-left  .cap-heading,
+    .hero-caption.from-left  .cap-body,  .hero-caption.from-left  .cap-cta { transform: translateX(-60px); }
+    .hero-caption.from-right .cap-label, .hero-caption.from-right .cap-heading,
+    .hero-caption.from-right .cap-body,  .hero-caption.from-right .cap-cta { transform: translateX(60px); }
+    .hero-caption.from-up    .cap-label, .hero-caption.from-up    .cap-heading,
+    .hero-caption.from-up    .cap-body,  .hero-caption.from-up    .cap-cta { transform: translateY(54px); }
+    .hero-caption.clip .cap-heading { clip-path: inset(0 100% 0 0); transform: none; }
+    .hero-caption.active .cap-label,
+    .hero-caption.active .cap-heading,
+    .hero-caption.active .cap-body,
+    .hero-caption.active .cap-cta { opacity: 1; transform: none; clip-path: inset(0 0 0 0); }
+    .hero-caption.active .cap-heading { transition-delay: .12s; }
+    .hero-caption.active .cap-body    { transition-delay: .24s; }
+    .hero-caption.active .cap-cta     { transition-delay: .34s; }
+
+    @media (max-width: 768px) {
+      .hero-track { height: 175vh; }
+      .hero-caption { justify-content: center; text-align: center; }
+      .hero-caption-inner { max-width: 88vw; margin: 0 auto; text-align: center; }
+      .align-left, .align-right { margin: 0 auto; text-align: center; }
+      .align-right .cap-body { margin: 1.1rem auto 0; }
+      .hero-caption-inner::before,
+      .align-right .hero-caption-inner::before { background: radial-gradient(82% 72% at 50% 50%, rgba(251,246,236,.84), transparent 76%); }
+      .hero-marquee-text { font-size: 23vw; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-caption,
+      .hero-caption .cap-label, .hero-caption .cap-heading,
+      .hero-caption .cap-body,  .hero-caption .cap-cta { transition: opacity .2s linear; transform: none; }
+    }
   </style>
 </head>
 
@@ -235,51 +345,95 @@
     </div>
   </header>
 
-  <!-- ============ HERO ============ -->
-  <section class="relative min-h-[100svh] flex items-center overflow-hidden pt-28 pb-20">
-    <!-- watercolor washes -->
-    <div class="wash" style="width:46vw;height:46vw;top:-12%;right:-8%;background: radial-gradient(circle,#B0CAD0,transparent 65%);"></div>
-    <div class="wash" style="width:40vw;height:40vw;top:18%;left:-12%;background: radial-gradient(circle,#CEC4B2,transparent 66%);opacity:.6;"></div>
-    <div class="wash" style="width:34vw;height:34vw;bottom:-14%;right:18%;background: radial-gradient(circle,#BD894A,transparent 68%);opacity:.32;"></div>
+  <!-- ============ HERO — watercolor video scroll experience ============ -->
 
-    <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10 grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-8 items-center w-full">
-      <!-- Copy -->
-      <div class="text-center lg:text-left">
-        <p class="eyebrow reveal">Ilhabela · São Paulo · Cascais</p>
-        <h1 class="reveal mt-5 font-display font-semibold text-[clamp(3rem,9vw,6.2rem)] leading-[0.95] text-terracotta">
-          Beleza solar,<br>
-          <span class="italic font-medium text-sienna">feita para durar</span><br>
-          o dia inteiro.
-        </h1>
-        <p class="reveal mt-7 max-w-xl mx-auto lg:mx-0 text-[1.08rem] text-ink/85 leading-relaxed">
-          Maquiagem e penteados de alta performance para noivas e ocasiões especiais. A técnica <em class="not-italic text-deep-teal font-normal">Second Skin</em> revela a sua pele real — radiante sob a luz natural e impecável diante das câmeras, mesmo sob o sol e a maresia do litoral.
-        </p>
-        <div class="reveal mt-9 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-          <a href="#contato" class="btn btn-primary">
-            Solicitar orçamento
-          </a>
-          <a href="#contato" class="btn btn-ghost">Agendar atendimento</a>
-        </div>
-        <div class="reveal mt-10 flex items-center gap-7 justify-center lg:justify-start text-sm text-ink/70">
-          <div><span class="block font-display text-3xl text-terracotta font-semibold leading-none">16+</span>anos de carreira</div>
-          <div class="h-9 w-px bg-rose/40"></div>
-          <div><span class="block font-display text-3xl text-terracotta font-semibold leading-none">MAC</span>Cosmetics Europa</div>
-          <div class="h-9 w-px bg-rose/40"></div>
-          <div><span class="block font-display text-3xl text-terracotta font-semibold leading-none">3</span>destinos de atendimento</div>
+  <!-- preload screen -->
+  <div id="hero-loader">
+    <p class="loader-brand">Arih <span>Ateliê</span></p>
+    <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+    <p class="loader-pct" id="loaderPct">0%</p>
+  </div>
+
+  <!-- fixed watercolor video canvas, revealed via circle-wipe -->
+  <div class="canvas-wrap" id="canvasWrap" aria-hidden="true">
+    <canvas id="hero-canvas"></canvas>
+    <div class="canvas-vignette"></div>
+  </div>
+
+  <!-- oversized scroll marquee -->
+  <div class="hero-marquee" id="heroMarquee" aria-hidden="true">
+    <span class="hero-marquee-text">beleza solar · second skin · ao nascer do sol · beleza solar · second skin ·&nbsp;</span>
+  </div>
+
+  <!-- caption beats layered over the video -->
+  <div class="hero-caption from-left" data-enter="18" data-leave="38">
+    <div class="hero-caption-inner align-left">
+      <span class="cap-label">001 / A técnica</span>
+      <h2 class="cap-heading">Second <span class="italic text-sienna">Skin</span></h2>
+      <p class="cap-body">Uma pele que respira luz. Acabamento imperceptível que revela — nunca mascara — a sua beleza real.</p>
+    </div>
+  </div>
+
+  <div class="hero-caption from-right clip" data-enter="42" data-leave="62">
+    <div class="hero-caption-inner align-right">
+      <span class="cap-label">002 / Alta performance</span>
+      <h2 class="cap-heading">Resistente à <span class="italic text-sienna">maresia</span></h2>
+      <p class="cap-body">Sol, calor e o ar salgado do litoral. A beleza permanece impecável do primeiro brinde ao último abraço.</p>
+    </div>
+  </div>
+
+  <div class="hero-caption from-up" data-enter="66" data-leave="88">
+    <div class="hero-caption-inner align-left">
+      <span class="cap-label">003 / Destination Wedding</span>
+      <h2 class="cap-heading">Do “sim” ao <span class="italic text-sienna">nascer do sol</span></h2>
+      <p class="cap-body">Maquiagem e penteado pensados para o seu destino — em Ilhabela, São Paulo ou Cascais.</p>
+      <div class="cap-cta"><a href="#contato" class="btn btn-primary">Solicitar orçamento</a></div>
+    </div>
+  </div>
+
+  <!-- hero scroll experience -->
+  <section id="hero-master" class="hero-master">
+    <!-- first screen: brand copy on solid paper -->
+    <div class="hero-standalone" id="heroStandalone">
+      <!-- watercolor washes -->
+      <div class="wash" style="width:46vw;height:46vw;top:-12%;right:-8%;background: radial-gradient(circle,#B0CAD0,transparent 65%);"></div>
+      <div class="wash" style="width:40vw;height:40vw;top:18%;left:-12%;background: radial-gradient(circle,#CEC4B2,transparent 66%);opacity:.6;"></div>
+      <div class="wash" style="width:34vw;height:34vw;bottom:-14%;right:18%;background: radial-gradient(circle,#BD894A,transparent 68%);opacity:.32;"></div>
+
+      <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10 w-full">
+        <div class="max-w-3xl text-center lg:text-left mx-auto lg:mx-0">
+          <p class="eyebrow reveal">Ilhabela · São Paulo · Cascais</p>
+          <h1 class="reveal mt-5 font-display font-semibold text-[clamp(3rem,9vw,6.4rem)] leading-[0.95] text-terracotta">
+            Beleza solar,<br>
+            <span class="italic font-medium text-sienna">feita para durar</span><br>
+            o dia inteiro.
+          </h1>
+          <p class="reveal mt-7 max-w-xl mx-auto lg:mx-0 text-[1.08rem] text-ink/85 leading-relaxed">
+            Maquiagem e penteados de alta performance para noivas e ocasiões especiais. A técnica <em class="not-italic text-deep-teal font-normal">Second Skin</em> revela a sua pele real — radiante sob a luz natural e impecável diante das câmeras, mesmo sob o sol e a maresia do litoral.
+          </p>
+          <div class="reveal mt-9 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <a href="#contato" class="btn btn-primary">Solicitar orçamento</a>
+            <a href="#contato" class="btn btn-ghost">Agendar atendimento</a>
+          </div>
+          <div class="reveal mt-10 flex items-center gap-7 justify-center lg:justify-start text-sm text-ink/70">
+            <div><span class="block font-display text-3xl text-terracotta font-semibold leading-none">16+</span>anos de carreira</div>
+            <div class="h-9 w-px bg-rose/40"></div>
+            <div><span class="block font-display text-3xl text-terracotta font-semibold leading-none">MAC</span>Cosmetics Europa</div>
+            <div class="h-9 w-px bg-rose/40"></div>
+            <div><span class="block font-display text-3xl text-terracotta font-semibold leading-none">3</span>destinos de atendimento</div>
+          </div>
         </div>
       </div>
 
-      <!-- Logo / illustration -->
-      <div class="relative reveal flex justify-center">
-        <div class="wash" style="width:108%;height:108%;top:-4%;left:-4%;background:radial-gradient(circle,#FDF7EE,transparent 60%);opacity:.9;filter:blur(30px);"></div>
-        <img src="brand_assets/logo.jpeg" alt="Ilustração em aquarela do Arih Ateliê: rosto feminino com cabelos ao vento, sol e onda do mar" class="floaty relative z-10 w-[78%] max-w-md lg:max-w-lg mix-blend-multiply" />
+      <!-- scroll cue -->
+      <div class="absolute bottom-7 left-1/2 -translate-x-1/2 z-10 text-teal/70 flex flex-col items-center gap-1.5" aria-hidden="true">
+        <span class="eyebrow !text-[0.58rem] !tracking-[0.3em]">Role para descobrir</span>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" class="animate-bounce" style="animation-duration:2.4s"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
       </div>
     </div>
 
-    <!-- scroll cue -->
-    <a href="#sobre" class="absolute bottom-7 left-1/2 -translate-x-1/2 z-10 text-teal/70 hover:text-terracotta transition-colors" aria-label="Rolar para a próxima seção">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" class="animate-bounce" style="animation-duration:2.4s"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
-    </a>
+    <!-- scrub track — provides scroll length for the video -->
+    <div class="hero-track" aria-hidden="true"></div>
   </section>
 
   <!-- ============ SOBRE ============ -->
@@ -855,6 +1009,11 @@
     <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.68-6.13A11.86 11.86 0 0 1 .16 11.9C.16 5.34 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.41c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.69-1.45L.06 24Zm6.6-3.8c1.68.99 3.28 1.58 5.4 1.58 5.45 0 9.89-4.43 9.89-9.88 0-2.64-1.03-5.12-2.9-6.99a9.82 9.82 0 0 0-6.98-2.9c-5.46 0-9.9 4.44-9.9 9.89 0 1.87.52 3.28 1.4 4.75l-.99 3.62 3.08-1.07Zm11.39-5.31c-.07-.12-.27-.2-.57-.35-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.69.25-1.28.17-1.41Z"/></svg>
   </a>
 
+  <!-- smooth scroll + scroll animation libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+
   <script>
     // year
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -916,6 +1075,174 @@
       msg.classList.remove('hidden','text-sienna'); msg.classList.add('text-deep-teal');
       form.reset();
     });
+
+    /* ============================================================
+       VIDEO SCROLL HERO — Lenis smooth scroll + canvas frame scrub
+       ============================================================ */
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isAuto = navigator.webdriver;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Lenis smooth scroll, site-wide (skip when reduced motion or automation)
+    let lenis = null;
+    if (!prefersReduced && !isAuto) {
+      lenis = new Lenis({
+        duration: 1.1,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+      });
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => lenis.raf(time * 1000));
+      gsap.ticker.lagSmoothing(0);
+
+      // route in-page anchors through Lenis so nav still works
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener('click', (e) => {
+          const id = a.getAttribute('href');
+          if (id.length > 1) {
+            const el = document.querySelector(id);
+            if (el) { e.preventDefault(); lenis.scrollTo(el, { offset: -10 }); }
+          }
+        });
+      });
+    }
+
+    (function videoHero() {
+      const FRAME_COUNT = 145;
+      const FRAME_SPEED = 1.18;   // frames finish ~85% scroll
+      const IMAGE_SCALE = 0.93;   // padded cover
+      const pad = (n) => String(n).padStart(4, '0');
+      const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+      const canvas = document.getElementById('hero-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const canvasWrap = document.getElementById('canvasWrap');
+      const heroStandalone = document.getElementById('heroStandalone');
+      const master = document.getElementById('hero-master');
+      const marquee = document.getElementById('heroMarquee');
+      const loader = document.getElementById('hero-loader');
+      const loaderFill = document.getElementById('loaderFill');
+      const loaderPct = document.getElementById('loaderPct');
+      const captions = Array.from(document.querySelectorAll('.hero-caption'));
+
+      const frames = new Array(FRAME_COUNT);
+      let bgColor = '#FBF6EC';
+      let currentFrame = -1;
+
+      function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.floor(window.innerWidth * dpr);
+        canvas.height = Math.floor(window.innerHeight * dpr);
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+        drawFrame(currentFrame < 0 ? 0 : currentFrame, true);
+      }
+
+      function sampleBg(img) {
+        try {
+          const t = document.createElement('canvas'); t.width = t.height = 8;
+          const tx = t.getContext('2d'); tx.drawImage(img, 0, 0, 8, 8);
+          const d = tx.getImageData(0, 0, 8, 8).data;
+          const corners = [0, 7 * 4, 7 * 8 * 4, (7 * 8 + 7) * 4];
+          let r = 0, g = 0, b = 0;
+          corners.forEach((p) => { r += d[p]; g += d[p + 1]; b += d[p + 2]; });
+          bgColor = `rgb(${(r / 4) | 0},${(g / 4) | 0},${(b / 4) | 0})`;
+        } catch (e) { /* tainted canvas — keep paper fallback */ }
+      }
+
+      function drawFrame(index, force) {
+        const img = frames[index];
+        if (!img) return;
+        if (index === currentFrame && !force) return;
+        currentFrame = index;
+        if (index % 20 === 0) sampleBg(img);
+        const cw = canvas.width, ch = canvas.height;
+        const iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
+        const scale = Math.max(cw / iw, ch / ih) * IMAGE_SCALE;
+        const dw = iw * scale, dh = ih * scale;
+        const dx = (cw - dw) / 2, dy = (ch - dh) / 2;
+        ctx.fillStyle = bgColor; ctx.fillRect(0, 0, cw, ch);
+        ctx.drawImage(img, dx, dy, dw, dh);
+      }
+
+      function loadFrame(i) {
+        return new Promise((res) => {
+          const img = new Image();
+          img.onload = () => { frames[i] = img; res(); };
+          img.onerror = () => res();
+          img.src = `frames/frame_${pad(i + 1)}.webp`;
+        });
+      }
+
+      function progress(self) {
+        const p = self.progress;
+        // brand copy dissolves as scroll begins
+        heroStandalone.style.opacity = clamp(1 - p / 0.10, 0, 1).toFixed(3);
+        // circle-wipe reveal of the video
+        const wipe = clamp((p - 0.015) / 0.10, 0, 1);
+        canvasWrap.style.clipPath = `circle(${(8 + wipe * 70).toFixed(1)}% at 50% 46%)`;
+        const cin = clamp(p / 0.05, 0, 1);
+        const cout = clamp(1 - (p - 0.9) / 0.08, 0, 1);
+        canvasWrap.style.opacity = Math.min(cin, cout).toFixed(3);
+        // frame scrub
+        const acc = Math.min(p * FRAME_SPEED, 1);
+        const idx = Math.min(Math.floor(acc * FRAME_COUNT), FRAME_COUNT - 1);
+        requestAnimationFrame(() => drawFrame(idx));
+        // oversized marquee slides + fades through the middle
+        marquee.style.transform = `translateX(${(-p * 28).toFixed(2)}vw)`;
+        marquee.style.opacity = (clamp(1 - Math.abs(p - 0.5) / 0.32, 0, 1) * 0.9).toFixed(3);
+        // caption beats
+        const pp = p * 100;
+        captions.forEach((c) => {
+          const en = +c.dataset.enter, lv = +c.dataset.leave;
+          c.classList.toggle('active', pp >= en && pp <= lv);
+        });
+      }
+
+      function setupScroll() {
+        resize();
+        window.addEventListener('resize', () => { resize(); ScrollTrigger.refresh(); }, { passive: true });
+        ScrollTrigger.create({
+          trigger: master, start: 'top top', end: 'bottom bottom', scrub: true,
+          onUpdate: progress,
+        });
+        ScrollTrigger.refresh();
+      }
+
+      function hideLoader(fast) {
+        loader.classList.add('done');
+        setTimeout(() => loader && loader.remove(), fast ? 60 : 900);
+      }
+      function setPct(i) {
+        const pct = Math.round((i + 1) / FRAME_COUNT * 100);
+        if (loaderFill) loaderFill.style.width = pct + '%';
+        if (loaderPct) loaderPct.textContent = pct + '%';
+      }
+
+      async function loadRest(from) {
+        for (let i = from; i < FRAME_COUNT; i++) { await loadFrame(i); setPct(i); }
+        ScrollTrigger.refresh();
+      }
+
+      if (isAuto) {
+        // automation/screenshots: never block — paint frame 0, set up, load rest in background
+        loadFrame(0).then(() => { drawFrame(0, true); setupScroll(); });
+        hideLoader(true);
+        loadRest(1);
+        return;
+      }
+
+      (async function init() {
+        const first = Math.min(12, FRAME_COUNT);
+        for (let i = 0; i < first; i++) { await loadFrame(i); setPct(i); }
+        drawFrame(0, true);
+        setupScroll();
+        hideLoader(false);
+        loadRest(first);
+      })();
+    })();
   </script>
 </body>
 </html>
