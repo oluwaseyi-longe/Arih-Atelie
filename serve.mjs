@@ -13,6 +13,8 @@ const MIME = {
   '.mjs': 'application/javascript',
   '.json': 'application/json',
   '.png': 'image/png',
+  '.webp': 'image/webp',
+  '.mp4': 'video/mp4',
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
   '.gif': 'image/gif',
