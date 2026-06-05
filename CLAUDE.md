@@ -52,6 +52,7 @@
 - Do not stop after one screenshot pass
 - Do not use `transition-all`
 - Do not use default Tailwind blue/indigo as primary color
+- **Never push to GitHub unless explicitly told to.** Do not `git push` under any circumstances — not after commits, not after completing a feature, not as part of a workflow — unless the user says so in that message.
 
 ## Skill Priority Rules
 When the `frontend-design` and `ui-ux-pro-max` skills conflict with these rules, these rules win:
