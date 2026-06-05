@@ -84,6 +84,99 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
+    /* ============ Beach background — watercolour ============ */
+    /* Spans the whole document and is painted the way the brand's
+       watercolour illustrations are: a granulated, mottled wash on
+       cold-press paper. Warm sand tooth up top dissolves through the
+       shoreline into a granulated teal sea with foamy crests at the foot. */
+    .beach-bg {
+      position: absolute;
+      top: 0; bottom: 0; left: 0; right: 0;
+      z-index: -1;
+      pointer-events: none;
+      /* Underwash: uneven pigment blooms over the sand → sea descent.
+         Bright, luminous washes — clean sand warming into sunlit aqua. */
+      background:
+        /* shoreline foam where sand meets water */
+        radial-gradient(120% 14% at 50% 49%, rgba(255,255,252,.7), transparent 62%),
+        /* loose blooms — wet-wash density that pools unevenly */
+        radial-gradient(46% 15% at 24% 8%,  rgba(224,170,96,.30), transparent 72%),
+        radial-gradient(52% 16% at 80% 17%, rgba(232,221,196,.6), transparent 72%),
+        radial-gradient(44% 14% at 58% 30%, rgba(196,166,162,.32), transparent 72%),
+        radial-gradient(48% 15% at 28% 63%, rgba(150,210,214,.55), transparent 72%),
+        radial-gradient(54% 16% at 74% 76%, rgba(74,165,179,.55), transparent 72%),
+        radial-gradient(64% 18% at 40% 92%, rgba(33,123,140,.5), transparent 70%),
+        /* base sand → sea graded underwash */
+        linear-gradient(180deg,
+          #FCF5E5 0%, #F9F0DC 9%, #F5EBD3 19%, #F0E7CF 31%,
+          #E9E8D6 43%, #D2E6E0 55%, #A9D8D9 67%, #79C2C8 77%,
+          #4FA8B3 86%, #2C8B9A 94%, #146B7C 100%);
+    }
+    .beach-bg > * { position:absolute; inset:0; pointer-events:none; }
+
+    /* Pigment granulation — coarse mottle of settling pigment.
+       Two octaves of turbulence (large pools + finer flecks) at higher
+       contrast so the wash visibly granulates like the reference art. */
+    .bb-grain {
+      mix-blend-mode: soft-light;
+      opacity: .85;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.011 0.015' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='gamma' amplitude='1.5' exponent='1.4' offset='-0.05'/%3E%3CfeFuncG type='gamma' amplitude='1.5' exponent='1.4' offset='-0.05'/%3E%3CfeFuncB type='gamma' amplitude='1.5' exponent='1.4' offset='-0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='g2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05 0.06' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g2)'/%3E%3C/svg%3E");
+      background-size: 900px 900px, 320px 320px;
+    }
+    /* Pigment pooling — gentle multiply for the darker granules only */
+    .bb-pool {
+      mix-blend-mode: multiply;
+      opacity: .14;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='760' height='760'%3E%3Cfilter id='pl'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.013 0.017' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23pl)'/%3E%3C/svg%3E");
+      background-size: 760px 760px;
+    }
+    /* Cold-press paper tooth — fine grain that catches the light */
+    .bb-paper {
+      mix-blend-mode: soft-light;
+      opacity: .8;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='gamma' amplitude='1.4' exponent='1.3' offset='-0.05'/%3E%3CfeFuncG type='gamma' amplitude='1.4' exponent='1.3' offset='-0.05'/%3E%3CfeFuncB type='gamma' amplitude='1.4' exponent='1.3' offset='-0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+      background-size: 190px 190px;
+    }
+    /* Sand grain — extra tooth across the dry upper beach only */
+    .bb-sand {
+      mix-blend-mode: multiply;
+      opacity: .14;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='sd'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sd)'/%3E%3C/svg%3E");
+      background-size: 150px 150px;
+      -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.7) 26%, transparent 50%);
+              mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.7) 26%, transparent 50%);
+    }
+    /* Sea foam — straight crest lines torn into waves by turbulence,
+       only across the lower water, denser toward the deep. */
+    .bb-waves {
+      opacity: .8;
+      background:
+        repeating-linear-gradient(179deg, transparent 0 44px, rgba(247,251,250,.5) 44px 47px, transparent 47px 92px),
+        repeating-linear-gradient(181deg, transparent 0 64px, rgba(176,202,208,.42) 64px 68px, transparent 68px 150px),
+        repeating-linear-gradient(178.5deg, transparent 0 100px, rgba(80,124,134,.34) 100px 105px, transparent 105px 230px);
+      filter: url(#beach-wave);
+      -webkit-mask-image: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.4) 64%, #000 84%);
+              mask-image: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.4) 64%, #000 84%);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .bb-waves { animation: beach-tide 22s ease-in-out infinite alternate; }
+    }
+    @keyframes beach-tide {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-10px); }
+    }
+    /* Footer rests on the deep sea — light type for contrast on water */
+    .beach-footer { border-color: rgba(251,246,236,.18) !important; }
+    .beach-footer p,
+    .beach-footer li,
+    .beach-footer .nav-link { color: rgba(251,246,236,.82) !important; }
+    .beach-footer .font-display { color: #FBF6EC !important; }
+    .beach-footer .eyebrow { color: rgba(176,202,208,.95) !important; }
+    .beach-footer .script-accent { color: #E8C99A !important; }
+    .beach-footer .border-t { border-color: rgba(251,246,236,.18) !important; }
+
     /* Headings */
     h1,h2,h3,h4 { font-family:"Cormorant Garamond", serif; color: var(--terracotta); font-weight: 600; line-height: 1.08; }
 
@@ -102,8 +195,8 @@
       filter: blur(2px); border-radius: 50%;
     }
 
-    /* Watercolor wash blobs */
-    .wash { position:absolute; border-radius:50%; filter: blur(48px); pointer-events:none; z-index:0; opacity:.5; }
+    /* Watercolor wash blobs — suppressed for the beach gradient version */
+    .wash { display:none; }
 
     /* Glass-ish card with layered tinted shadow */
     .card {
@@ -234,6 +327,21 @@
 </head>
 
 <body class="antialiased">
+
+  <!-- Beach wave displacement filter -->
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;">
+    <filter id="beach-wave" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.006 0.014" numOctaves="3" seed="9" stitchTiles="stitch" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="70" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+  <div class="beach-bg" aria-hidden="true">
+    <div class="bb-grain"></div>
+    <div class="bb-pool"></div>
+    <div class="bb-paper"></div>
+    <div class="bb-sand"></div>
+    <div class="bb-waves"></div>
+  </div>
 
   <!-- ============ NAV ============ -->
   <header id="top" class="fixed top-0 inset-x-0 z-50 transition-all duration-500" data-nav>
@@ -366,7 +474,7 @@
   </section>
 
   <!-- ============ DIFERENCIAIS ============ -->
-  <section class="relative py-[var(--space)] overflow-hidden bg-paper-deep/50">
+  <section class="relative py-[var(--space)] overflow-hidden">
     <div class="wash" style="width:42vw;height:42vw;top:-10%;right:-12%;background:radial-gradient(circle,#AB918F,transparent 68%);opacity:.3;"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
       <div class="text-center max-w-2xl mx-auto">
@@ -580,7 +688,7 @@
   </section>
 
   <!-- ============ PORTFÓLIO ============ -->
-  <section id="portfolio" class="relative py-[var(--space)] overflow-hidden bg-paper-deep/50">
+  <section id="portfolio" class="relative py-[var(--space)] overflow-hidden">
     <div class="wash" style="width:40vw;height:40vw;top:-8%;right:-12%;background:radial-gradient(circle,#AB918F,transparent 68%);opacity:.3;"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
       <div class="text-center max-w-2xl mx-auto">
@@ -652,7 +760,7 @@
   </section>
 
   <!-- ============ DEPOIMENTOS ============ -->
-  <section id="depoimentos" class="relative py-[var(--space)] overflow-hidden bg-paper-deep/50">
+  <section id="depoimentos" class="relative py-[var(--space)] overflow-hidden">
     <div class="wash" style="width:40vw;height:40vw;bottom:-10%;left:-12%;background:radial-gradient(circle,#CEC4B2,transparent 66%);opacity:.55;"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
       <div class="text-center max-w-2xl mx-auto">
@@ -757,7 +865,7 @@
   </section>
 
   <!-- ============ CONTATO ============ -->
-  <section id="contato" class="relative py-[var(--space)] overflow-hidden bg-paper-deep/60">
+  <section id="contato" class="relative py-[var(--space)] overflow-hidden">
     <div class="wash" style="width:44vw;height:44vw;top:-12%;left:-10%;background:radial-gradient(circle,#B0CAD0,transparent 66%);opacity:.45;"></div>
     <div class="wash" style="width:38vw;height:38vw;bottom:-12%;right:-12%;background:radial-gradient(circle,#BD894A,transparent 68%);opacity:.25;"></div>
 
@@ -843,7 +951,7 @@
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <footer class="relative overflow-hidden pt-16 pb-10 border-t border-rose/20">
+  <footer class="beach-footer relative overflow-hidden pt-16 pb-10 border-t border-rose/20">
     <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
       <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10">
         <div>
