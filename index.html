@@ -216,17 +216,6 @@
                   0 14px 26px -18px rgba(138,75,45,.28);
     }
 
-    /* Contato intro — soft frosted panel so the warm display type and body
-       copy stay legible where the page wash deepens into teal sea */
-    .contato-intro {
-      background: rgba(251,246,236,.82);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(171,145,143,.28);
-      box-shadow: 0 1px 2px rgba(71,59,49,.05),
-                  0 22px 50px -28px rgba(80,124,134,.50),
-                  0 10px 22px -16px rgba(138,75,45,.22);
-    }
-
     /* Buttons */
     .btn { position:relative; display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
       font-family:"Jost",sans-serif; font-weight:500; letter-spacing:.06em; font-size:.92rem;
@@ -291,8 +280,11 @@
     ::-webkit-scrollbar-thumb { background: var(--sand); border-radius:10px; border:3px solid var(--paper); }
     ::-webkit-scrollbar-thumb:hover { background: var(--rose); }
 
-    .float-wa { box-shadow: 0 12px 28px -10px rgba(15,85,99,.55); transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s; }
+    .float-wa { box-shadow: 0 12px 28px -10px rgba(15,85,99,.55); transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s, opacity .3s ease; }
     .float-wa:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 18px 34px -12px rgba(15,85,99,.65); }
+    /* Tuck the floating button away once the footer (which has its own
+       WhatsApp link) is in view, so it never covers the footer copy */
+    .float-wa.is-hidden { opacity: 0; transform: translateY(12px) scale(.85); pointer-events: none; }
 
     /* ============================================================
        VIDEO HERO — full-bleed autoplay loop with brand copy overlay
@@ -896,7 +888,7 @@ Serviços de beleza personalizados e de alta performance.
 
     <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
       <div>
-        <div class="reveal contato-intro rounded-3xl p-7 lg:p-9">
+        <div class="reveal card rounded-[2rem] p-7 sm:p-9">
           <p class="eyebrow">Contato</p>
           <h2 class="mt-4 text-[clamp(2.2rem,4.6vw,3.8rem)]">Vamos criar a sua <span class="italic text-sienna">melhor versão</span></h2>
           <p class="mt-5 text-ink max-w-md">Conte-nos sobre a sua data e o seu sonho. Responderemos com uma proposta personalizada, pensada especialmente para você.</p>
@@ -979,7 +971,7 @@ Serviços de beleza personalizados e de alta performance.
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <footer class="beach-footer relative overflow-hidden pt-16 pb-10 border-t border-rose/20">
+  <footer id="siteFooter" class="beach-footer relative overflow-hidden pt-16 pb-10 border-t border-rose/20">
     <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
       <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10">
         <div>
@@ -1040,6 +1032,17 @@ Serviços de beleza personalizados e de alta performance.
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+
+    // Hide the floating WhatsApp button while the footer is visible so it
+    // doesn't sit on top of the footer copy.
+    const floatWa = document.querySelector('.float-wa');
+    const siteFooter = document.getElementById('siteFooter');
+    if (floatWa && siteFooter && 'IntersectionObserver' in window) {
+      const waIo = new IntersectionObserver((entries) => {
+        floatWa.classList.toggle('is-hidden', entries[0].isIntersecting);
+      }, { threshold: 0 });
+      waIo.observe(siteFooter);
+    }
 
     // Mobile menu
     const menuBtn = document.getElementById('menuBtn');
