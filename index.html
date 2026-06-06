@@ -176,6 +176,16 @@
     .beach-footer .eyebrow { color: rgba(176,202,208,.95) !important; }
     .beach-footer .script-accent { color: #E8C99A !important; }
     .beach-footer .border-t { border-color: rgba(251,246,236,.18) !important; }
+    /* Emphasised brand taglines — heavier weight + brighter ink so they
+       read clearly over the deep-sea wash */
+    .beach-footer .footer-tagline {
+      color: #FCF7EC !important; font-weight: 500;
+      text-shadow: 0 1px 10px rgba(11,46,54,.45);
+    }
+    .beach-footer .script-accent.footer-script {
+      color: #F4DCB0 !important; font-weight: 700;
+      text-shadow: 0 1px 10px rgba(11,46,54,.5);
+    }
 
     /* Headings */
     h1,h2,h3,h4 { font-family:"Cormorant Garamond", serif; color: var(--terracotta); font-weight: 600; line-height: 1.08; }
@@ -919,7 +929,7 @@ Serviços de beleza personalizados e de alta performance.
             </span>
             <span>
               <span class="block text-sm font-medium text-ink">Ilhabela · São Paulo · Cascais</span>
-              <span class="block text-xs text-ink/60">Atualmente atendendo em ponto fixo em Ilhabela-SP</span>
+              <span class="block text-xs text-ink/60">Com ponto fixo em Ilhabela-SP</span>
             </span>
           </div>
         </div>
@@ -979,8 +989,8 @@ Serviços de beleza personalizados e de alta performance.
             <img src="brand_assets/logo-emblem.png" alt="Logotipo Arih Ateliê" class="h-14 w-14 rounded-full object-cover ring-1 ring-sand" style="object-position:50% 45%;" />
             <span class="font-display text-3xl font-semibold text-terracotta">Arih Ateliê</span>
           </div>
-          <p class="mt-4 text-sm text-ink/70 max-w-xs leading-relaxed">Natural Bridal Beauty. Alta performance, beleza solar e resistência à maresia — do “sim” ao nascer do sol.</p>
-          <p class="script-accent text-xl mt-4">Beauty on Demand · Destination Wedding</p>
+          <p class="footer-tagline mt-4 text-sm max-w-xs leading-relaxed">Natural Bridal Beauty. Alta performance, beleza solar e resistência à maresia — do “sim” ao nascer do sol.</p>
+          <p class="script-accent footer-script text-xl mt-4">Beauty on Demand · Destination Wedding</p>
         </div>
         <nav class="text-sm" aria-label="Navegação do rodapé">
           <p class="eyebrow !text-[0.6rem] mb-4">Navegação</p>
