@@ -1081,10 +1081,23 @@ Serviços de beleza personalizados e de alta performance.
       document.querySelectorAll('a[href^="#"]').forEach((a) => {
         a.addEventListener('click', (e) => {
           const id = a.getAttribute('href');
+          // #top points at the fixed header (no scroll position) — go to the very top
+          if (id === '#top' || id === '#') {
+            e.preventDefault(); lenis.scrollTo(0);
+            return;
+          }
           if (id.length > 1) {
             const el = document.querySelector(id);
             if (el) { e.preventDefault(); lenis.scrollTo(el, { offset: -10 }); }
           }
+        });
+      });
+    } else {
+      // Lenis disabled (reduced motion / automation): make #top links scroll to the very top
+      document.querySelectorAll('a[href="#top"]').forEach((a) => {
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
         });
       });
     }
