@@ -384,12 +384,14 @@
     </div>
   </header>
 
-  <!-- ============ HERO — full-bleed autoplay video loop ============ -->
+  <!-- ============ HERO — full-bleed autoplay ping-pong video loop ============ -->
   <section class="video-hero">
-    <!-- looping watercolor video background -->
+    <!-- watercolor video background — seamless ping-pong loop: the clip plays
+         forward then reverses back, baked into the file, so it never hard-cuts
+         back to the start. Loops natively. -->
     <video class="video-hero-media" id="heroVideo" autoplay muted loop playsinline preload="auto"
            poster="brand_assets/video_poster.jpg" aria-hidden="true">
-      <source src="brand_assets/video_hero.mp4" type="video/mp4" />
+      <source src="brand_assets/video_hero_loop.mp4" type="video/mp4" />
     </video>
     <div class="video-hero-scrim"></div>
 
@@ -1087,7 +1089,9 @@
       });
     }
 
-    // Keep the hero video looping smoothly; honour reduced-motion
+    // Hero plays a seamless forward→reverse ping-pong loop (baked into
+    // video_hero_loop.mp4 and looped natively). JS only kicks off autoplay
+    // and honours reduced-motion.
     (function heroVideo() {
       const v = document.getElementById('heroVideo');
       if (!v) return;
