@@ -216,6 +216,17 @@
                   0 14px 26px -18px rgba(138,75,45,.28);
     }
 
+    /* Contato intro — soft frosted panel so the warm display type and body
+       copy stay legible where the page wash deepens into teal sea */
+    .contato-intro {
+      background: rgba(251,246,236,.82);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(171,145,143,.28);
+      box-shadow: 0 1px 2px rgba(71,59,49,.05),
+                  0 22px 50px -28px rgba(80,124,134,.50),
+                  0 10px 22px -16px rgba(138,75,45,.22);
+    }
+
     /* Buttons */
     .btn { position:relative; display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
       font-family:"Jost",sans-serif; font-weight:500; letter-spacing:.06em; font-size:.92rem;
@@ -885,9 +896,11 @@ Serviços de beleza personalizados e de alta performance.
 
     <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
       <div>
-        <p class="eyebrow reveal">Contato</p>
-        <h2 class="reveal mt-4 text-[clamp(2.2rem,4.6vw,3.8rem)]">Vamos criar a sua <span class="italic text-sienna">melhor versão</span></h2>
-        <p class="reveal mt-5 text-ink/80 max-w-md">Conte-nos sobre a sua data e o seu sonho. Responderemos com uma proposta personalizada, pensada especialmente para você.</p>
+        <div class="reveal contato-intro rounded-3xl p-7 lg:p-9">
+          <p class="eyebrow">Contato</p>
+          <h2 class="mt-4 text-[clamp(2.2rem,4.6vw,3.8rem)]">Vamos criar a sua <span class="italic text-sienna">melhor versão</span></h2>
+          <p class="mt-5 text-ink max-w-md">Conte-nos sobre a sua data e o seu sonho. Responderemos com uma proposta personalizada, pensada especialmente para você.</p>
+        </div>
 
         <div class="reveal mt-9 space-y-4">
           <a href="https://wa.me/5512000000000?text=Ol%C3%A1%20Arih%2C%20gostaria%20de%20um%20or%C3%A7amento" target="_blank" rel="noopener" class="group flex items-center gap-4 card rounded-2xl p-5 hover:no-underline">
