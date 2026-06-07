@@ -322,9 +322,12 @@
 
     @media (max-width: 900px) {
       .video-hero { align-items: flex-end; }
+      /* pan the framing toward the artist (left of the source) so her back and
+         the bride stay visible above the copy */
+      .video-hero-media { object-position: 45% center; }
       .video-hero-scrim {
         background:
-          linear-gradient(0deg, rgba(251,246,236,.98) 0%, rgba(251,246,236,.9) 38%, rgba(251,246,236,.5) 66%, rgba(251,246,236,.12) 88%, rgba(251,246,236,0) 100%);
+          linear-gradient(0deg, rgba(251,246,236,.97) 0%, rgba(251,246,236,.88) 30%, rgba(251,246,236,.55) 52%, rgba(251,246,236,.12) 74%, rgba(251,246,236,0) 100%);
       }
     }
   </style>
