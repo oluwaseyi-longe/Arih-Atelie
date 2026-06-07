@@ -196,15 +196,6 @@
     }
     .script-accent { font-family:"Petit Formal Script", cursive; color: var(--sienna); }
 
-    /* Hand-painted brushstroke underline under headings */
-    .brush-underline { position: relative; display:inline-block; }
-    .brush-underline::after {
-      content:""; position:absolute; left:-4%; right:-4%; bottom:-.32em; height:.42em;
-      background: radial-gradient(ellipse 60% 100% at 30% 50%, rgba(80,124,134,.55), transparent 70%),
-                  radial-gradient(ellipse 70% 90% at 75% 60%, rgba(189,137,74,.5), transparent 72%);
-      filter: blur(2px); border-radius: 50%;
-    }
-
     /* Watercolor wash blobs — suppressed for the beach gradient version */
     .wash { display:none; }
 
@@ -455,7 +446,7 @@ Serviços de beleza personalizados e de alta performance.
       <div class="order-1 lg:order-2">
         <p class="eyebrow reveal">Sobre o ateliê</p>
         <h2 class="reveal mt-4 text-[clamp(2.2rem,4.6vw,3.6rem)]">
-          <span class="brush-underline">Onde o rigor das passarelas</span><br>encontra a leveza do litoral.
+          Onde o rigor das passarelas<br>encontra a leveza do litoral.
         </h2>
         <p class="reveal mt-7 text-ink/85 leading-relaxed">
           O Arih Ateliê nasce da união entre o rigor técnico das passarelas internacionais e a leveza orgânica do litoral. Fundado por Arih, maquiadora de alta performance há 16 anos, com trajetória consolidada na <strong class="font-medium text-deep-teal">MAC Cosmetics Europa</strong>, vasta experiência no atendimento de noivas em território <strong class="font-medium text-deep-teal">nacional e internacional</strong>, docente do <strong class="font-medium text-deep-teal">Senac São Paulo</strong> e maquiadora convidada da equipe do ícone da beleza <strong class="font-medium text-deep-teal">Celso Kamura</strong>.
