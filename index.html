@@ -325,9 +325,16 @@
       /* pan the framing toward the artist (left of the source) so her back and
          the bride stay visible above the copy */
       .video-hero-media { object-position: 45% center; }
+      /* near-solid base from the bottom up to the middle of the primary CTA
+         (~140px), then return to the soft veil so the dress and hands stay visible */
       .video-hero-scrim {
         background:
-          linear-gradient(0deg, rgba(251,246,236,.99) 0%, rgba(251,246,236,.97) 40%, rgba(251,246,236,.84) 56%, rgba(251,246,236,.4) 72%, rgba(251,246,236,0) 90%);
+          linear-gradient(0deg, rgba(251,246,236,.97) 0, rgba(251,246,236,.96) 140px, rgba(251,246,236,.55) 200px, rgba(251,246,236,.5) 50%, rgba(251,246,236,.22) 70%, rgba(251,246,236,0) 88%);
+      }
+      /* lift the eyebrow off the busy scene without adding background wash */
+      .video-hero-content .eyebrow {
+        color: var(--deep-teal); font-weight: 600;
+        text-shadow: 0 1px 10px rgba(251,246,236,.95), 0 0 5px rgba(251,246,236,.9), 0 1px 2px rgba(251,246,236,.8);
       }
     }
   </style>
