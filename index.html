@@ -325,9 +325,16 @@
       /* pan the framing toward the artist (left of the source) so her back and
          the bride stay visible above the copy */
       .video-hero-media { object-position: 45% center; }
+      /* near-solid base from the bottom up to the middle of the primary CTA
+         (~140px), then return to the soft veil so the dress and hands stay visible */
       .video-hero-scrim {
         background:
-          linear-gradient(0deg, rgba(251,246,236,.97) 0%, rgba(251,246,236,.88) 30%, rgba(251,246,236,.55) 52%, rgba(251,246,236,.12) 74%, rgba(251,246,236,0) 100%);
+          linear-gradient(0deg, rgba(251,246,236,.97) 0, rgba(251,246,236,.96) 140px, rgba(251,246,236,.55) 200px, rgba(251,246,236,.5) 50%, rgba(251,246,236,.22) 70%, rgba(251,246,236,0) 88%);
+      }
+      /* lift the eyebrow off the busy scene without adding background wash */
+      .video-hero-content .eyebrow {
+        color: var(--deep-teal); font-weight: 600;
+        text-shadow: 0 1px 10px rgba(251,246,236,.95), 0 0 5px rgba(251,246,236,.9), 0 1px 2px rgba(251,246,236,.8);
       }
     }
   </style>
@@ -402,10 +409,10 @@
 
     <!-- brand copy overlay -->
     <div class="video-hero-content">
-      <div class="mx-auto max-w-7xl px-5 lg:px-10 w-full pt-28 pb-24 lg:pt-32 lg:pb-0">
+      <div class="mx-auto max-w-7xl px-5 lg:px-10 w-full pt-28 pb-10 lg:pt-32 lg:pb-0">
         <div class="hero-copy-shadow max-w-2xl text-center lg:text-left mx-auto lg:mx-0">
           <p class="eyebrow reveal">Ilhabela</p>
-          <h1 class="reveal mt-5 font-display font-semibold text-[clamp(3rem,9vw,6.4rem)] leading-[0.95] text-terracotta">
+          <h1 class="reveal mt-5 font-display font-semibold text-[clamp(2.5rem,9vw,6.4rem)] leading-[0.95] text-terracotta">
             Beleza resistente<br>
             <span class="italic font-medium text-sienna">à maresia e a</span><br>
             fortes emoções.
@@ -422,7 +429,7 @@ Serviços de beleza personalizados e de alta performance.
     </div>
 
     <!-- scroll cue -->
-    <a href="#sobre" class="absolute bottom-7 left-1/2 -translate-x-1/2 z-10 text-teal/80 hover:text-terracotta transition-colors flex flex-col items-center gap-1.5" aria-label="Rolar para a próxima seção">
+    <a href="#sobre" class="absolute bottom-7 left-1/2 -translate-x-1/2 z-10 text-teal/80 hover:text-terracotta transition-colors hidden lg:flex flex-col items-center gap-1.5" aria-label="Rolar para a próxima seção">
       <span class="eyebrow !text-[0.58rem] !tracking-[0.3em]">Role para descobrir</span>
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" class="animate-bounce" style="animation-duration:2.4s"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
     </a>
