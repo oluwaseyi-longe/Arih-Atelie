@@ -688,9 +688,9 @@ Serviços de beleza personalizados e de alta performance.
             <span class="font-display text-3xl text-terracotta font-semibold">Workshops</span>
             <span class="flex-1 h-px bg-gradient-to-r from-rose/50 to-transparent"></span>
           </div>
-          <div class="lg:flex-1 lg:flex lg:gap-6 lg:min-h-0">
-            <!-- two cards · left on desktop -->
-            <div class="grid sm:grid-cols-2 gap-6 mb-6 lg:mb-0 lg:flex lg:flex-col lg:flex-1 lg:min-w-0">
+          <div class="flex flex-col gap-6 lg:flex-row lg:flex-1 lg:min-h-0">
+            <!-- two cards · below the image on mobile, left on desktop -->
+            <div class="order-2 lg:order-1 grid sm:grid-cols-2 gap-6 lg:flex lg:flex-col lg:flex-1 lg:min-w-0">
               <article class="reveal card rounded-[1.5rem] p-7 flex flex-col lg:flex-1">
                 <h3 class="text-xl">Automaquiagem particular</h3>
                 <p class="mt-2 text-sm text-ink/75 leading-relaxed flex-1">Tire todas as suas dúvidas de maquiagem em uma aula prática exclusiva com 3h de duração.</p>
@@ -700,8 +700,8 @@ Serviços de beleza personalizados e de alta performance.
                 <p class="mt-2 text-sm text-ink/75 leading-relaxed flex-1">Reúna suas amigas para uma aula de automaquiagem em grupo de até 10 pessoas.</p>
               </article>
             </div>
-            <!-- image · right on desktop, cropped to fill the column height -->
-            <figure class="reveal wc-frame group rounded-[1.5rem] overflow-hidden ring-1 ring-rose/20 relative h-52 lg:h-auto lg:w-[42%] lg:shrink-0">
+            <!-- image · on top on mobile, right on desktop (cropped to fill the column height) -->
+            <figure class="reveal wc-frame group order-1 lg:order-2 rounded-[1.5rem] overflow-hidden ring-1 ring-rose/20 relative h-52 lg:h-auto lg:w-[42%] lg:shrink-0">
               <img src="brand_assets/maquiagem-aquarela.jpeg" alt="Aquarela de uma aula de automaquiagem com cartela de sombras e espelho" class="transition-transform duration-700 group-hover:scale-105 lg:absolute lg:inset-0" style="object-position: 50% 42%;" />
               <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-deep-teal/75 to-transparent p-5 text-paper text-xs font-medium">Aula de automaquiagem</figcaption>
             </figure>
