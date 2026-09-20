@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio — Arih Ateliê | Noivas, casamentos e editoriais</title>
+  <meta name="description" content="Portfólio do Arih Ateliê: o casamento Edu Guedes e ensaios de noivas em Ilhabela. Maquiagem e penteados de alta performance, fotografados de perto." />
+  <meta name="theme-color" content="#FBF6EC" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Portfólio — Arih Ateliê" />
+  <meta property="og:description" content="Um casamento real e quatro ensaios de noivas. Maquiagem e penteados que resistem ao sol, ao vento e à festa." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:image" content="assets/web/casamentoeduguedes/04.jpg" />
+
+  <link rel="icon" href="brand_assets/logo.jpeg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&family=Petit+Formal+Script&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sand:      '#CEC4B2',
+            mist:      '#B0CAD0',
+            rose:      '#AB918F',
+            teal:      '#507C86',
+            'deep-teal': '#0F5563',
+            terracotta:'#8A4B2D',
+            sienna:    '#A85E33',
+            gold:      '#BD894A',
+            paper:     '#FBF6EC',
+            'paper-deep': '#F4ECDD',
+            ink:       '#473B31',
+          },
+          fontFamily: {
+            display: ['"Cormorant Garamond"', 'serif'],
+            body: ['"Jost"', 'sans-serif'],
+            script: ['"Petit Formal Script"', 'cursive'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --sand:#CEC4B2; --mist:#B0CAD0; --rose:#AB918F; --teal:#507C86;
+      --deep-teal:#0F5563; --terracotta:#8A4B2D; --gold:#BD894A;
+      --paper:#FBF6EC; --ink:#473B31;
+      --space: clamp(2.5rem, 5vw, 4.5rem);
+    }
+
+    html { scroll-behavior: auto; -webkit-text-size-adjust: 100%; } /* Lenis owns smoothing */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
+    }
+
+    body {
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: "Jost", sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Paper grain texture overlay */
+    body::before {
+      content:"";
+      position: fixed; inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: .05;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ============ Beach background — watercolour ============ */
+    /* Spans the whole document and is painted the way the brand's
+       watercolour illustrations are: a granulated, mottled wash on
+       cold-press paper. Warm sand tooth up top dissolves through the
+       shoreline into a granulated teal sea with foamy crests at the foot. */
+    .beach-bg {
+      position: absolute;
+      top: 0; bottom: 0; left: 0; right: 0;
+      z-index: -1;
+      pointer-events: none;
+      /* Underwash: uneven pigment blooms over the sand → sea descent.
+         Bright, luminous washes — clean sand warming into sunlit aqua. */
+      background:
+        /* shoreline foam where sand meets water */
+        radial-gradient(120% 14% at 50% 49%, rgba(255,255,252,.7), transparent 62%),
+        /* loose blooms — wet-wash density that pools unevenly */
+        radial-gradient(46% 15% at 24% 8%,  rgba(224,170,96,.30), transparent 72%),
+        radial-gradient(52% 16% at 80% 17%, rgba(232,221,196,.6), transparent 72%),
+        radial-gradient(44% 14% at 58% 30%, rgba(196,166,162,.32), transparent 72%),
+        radial-gradient(48% 15% at 28% 63%, rgba(150,210,214,.55), transparent 72%),
+        radial-gradient(54% 16% at 74% 76%, rgba(74,165,179,.55), transparent 72%),
+        radial-gradient(64% 18% at 40% 92%, rgba(33,123,140,.5), transparent 70%),
+        /* base sand → sea graded underwash */
+        linear-gradient(180deg,
+          #FCF5E5 0%, #F9F0DC 9%, #F5EBD3 19%, #F0E7CF 31%,
+          #E9E8D6 43%, #D2E6E0 55%, #A9D8D9 67%, #79C2C8 77%,
+          #4FA8B3 86%, #2C8B9A 94%, #146B7C 100%);
+    }
+    .beach-bg > * { position:absolute; inset:0; pointer-events:none; }
+
+    /* Pigment granulation — coarse mottle of settling pigment.
+       Two octaves of turbulence (large pools + finer flecks) at higher
+       contrast so the wash visibly granulates like the reference art. */
+    .bb-grain {
+      mix-blend-mode: soft-light;
+      opacity: .85;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.011 0.015' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='gamma' amplitude='1.5' exponent='1.4' offset='-0.05'/%3E%3CfeFuncG type='gamma' amplitude='1.5' exponent='1.4' offset='-0.05'/%3E%3CfeFuncB type='gamma' amplitude='1.5' exponent='1.4' offset='-0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='g2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05 0.06' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g2)'/%3E%3C/svg%3E");
+      background-size: 900px 900px, 320px 320px;
+    }
+    /* Pigment pooling — gentle multiply for the darker granules only */
+    .bb-pool {
+      mix-blend-mode: multiply;
+      opacity: .14;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='760' height='760'%3E%3Cfilter id='pl'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.013 0.017' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23pl)'/%3E%3C/svg%3E");
+      background-size: 760px 760px;
+    }
+    /* Cold-press paper tooth — fine grain that catches the light */
+    .bb-paper {
+      mix-blend-mode: soft-light;
+      opacity: .8;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='gamma' amplitude='1.4' exponent='1.3' offset='-0.05'/%3E%3CfeFuncG type='gamma' amplitude='1.4' exponent='1.3' offset='-0.05'/%3E%3CfeFuncB type='gamma' amplitude='1.4' exponent='1.3' offset='-0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+      background-size: 190px 190px;
+    }
+    /* Sand grain — extra tooth across the dry upper beach only */
+    .bb-sand {
+      mix-blend-mode: multiply;
+      opacity: .14;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='sd'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sd)'/%3E%3C/svg%3E");
+      background-size: 150px 150px;
+      -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.7) 26%, transparent 50%);
+              mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.7) 26%, transparent 50%);
+    }
+    /* Sea foam — straight crest lines torn into waves by turbulence,
+       only across the lower water, denser toward the deep. */
+    .bb-waves {
+      opacity: .8;
+      background:
+        repeating-linear-gradient(179deg, transparent 0 44px, rgba(247,251,250,.5) 44px 47px, transparent 47px 92px),
+        repeating-linear-gradient(181deg, transparent 0 64px, rgba(176,202,208,.42) 64px 68px, transparent 68px 150px),
+        repeating-linear-gradient(178.5deg, transparent 0 100px, rgba(80,124,134,.34) 100px 105px, transparent 105px 230px);
+      filter: url(#beach-wave);
+      -webkit-mask-image: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.4) 64%, #000 84%);
+              mask-image: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.4) 64%, #000 84%);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .bb-waves { animation: beach-tide 22s ease-in-out infinite alternate; }
+    }
+    @keyframes beach-tide {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-10px); }
+    }
+    /* Footer rests on the deep sea — light type for contrast on water */
+    .beach-footer { border-color: rgba(251,246,236,.18) !important; }
+    .beach-footer p,
+    .beach-footer li,
+    .beach-footer .nav-link { color: rgba(251,246,236,.82) !important; }
+    .beach-footer .font-display { color: #FBF6EC !important; }
+    .beach-footer .eyebrow { color: rgba(176,202,208,.95) !important; }
+    .beach-footer .script-accent { color: #E8C99A !important; }
+    .beach-footer .border-t { border-color: rgba(251,246,236,.18) !important; }
+    /* Emphasised brand taglines — heavier weight + brighter ink so they
+       read clearly over the deep-sea wash */
+    .beach-footer .footer-tagline {
+      color: #FCF7EC !important; font-weight: 500;
+      text-shadow: 0 1px 10px rgba(11,46,54,.45);
+    }
+    .beach-footer .script-accent.footer-script {
+      color: #F4DCB0 !important; font-weight: 700;
+      text-shadow: 0 1px 10px rgba(11,46,54,.5);
+    }
+
+    /* Headings */
+    h1,h2,h3,h4 { font-family:"Cormorant Garamond", serif; color: var(--terracotta); font-weight: 600; line-height: 1.08; }
+
+    .eyebrow {
+      font-family:"Jost", sans-serif; font-weight:500; text-transform:uppercase;
+      letter-spacing:.34em; font-size:.72rem; color: var(--teal);
+    }
+    .script-accent { font-family:"Petit Formal Script", cursive; color: var(--sienna); }
+
+    /* Watercolor wash blobs — suppressed for the beach gradient version */
+    .wash { display:none; }
+
+    /* Glass-ish card with layered tinted shadow */
+    .card {
+      background: rgba(255,253,248,.72);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(171,145,143,.22);
+      box-shadow: 0 1px 2px rgba(71,59,49,.04),
+                  0 18px 40px -24px rgba(80,124,134,.40),
+                  0 8px 18px -14px rgba(138,75,45,.20);
+      transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s cubic-bezier(.22,1,.36,1), border-color .35s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(80,124,134,.40);
+      box-shadow: 0 1px 2px rgba(71,59,49,.05),
+                  0 30px 60px -28px rgba(80,124,134,.55),
+                  0 14px 26px -18px rgba(138,75,45,.28);
+    }
+
+    /* Buttons */
+    .btn { position:relative; display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
+      font-family:"Jost",sans-serif; font-weight:500; letter-spacing:.06em; font-size:.92rem;
+      border-radius:999px; padding:.95rem 2rem; cursor:pointer;
+      transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease, background-color .3s ease, color .3s ease;
+      will-change: transform; text-decoration:none;
+    }
+    .btn:focus-visible { outline:2px solid var(--deep-teal); outline-offset:3px; }
+    .btn-primary { background: var(--terracotta); color:#FDF7EE;
+      box-shadow: 0 14px 30px -14px rgba(138,75,45,.7), inset 0 1px 0 rgba(255,255,255,.12); }
+    .btn-primary:hover { transform: translateY(-3px); background:#7A4026;
+      box-shadow: 0 20px 38px -16px rgba(138,75,45,.78); }
+    .btn-primary:active { transform: translateY(-1px) scale(.985); }
+    .btn-ghost { background: rgba(255,255,255,.45); color: var(--deep-teal);
+      border:1.5px solid rgba(80,124,134,.5); }
+    .btn-ghost:hover { transform: translateY(-3px); background: rgba(80,124,134,.1); border-color: var(--deep-teal); }
+    .btn-ghost:active { transform: translateY(-1px) scale(.985); }
+
+    a, button { -webkit-tap-highlight-color: transparent; }
+
+    /* Nav link underline */
+    .nav-link { position:relative; color: var(--ink); font-weight:400; font-size:.92rem; letter-spacing:.04em; transition: color .25s; padding: .25rem 0; }
+    .nav-link::after { content:""; position:absolute; left:0; bottom:-2px; height:1.5px; width:0; background: var(--terracotta); transition: width .3s cubic-bezier(.22,1,.36,1); }
+    .nav-link:hover { color: var(--terracotta); }
+    .nav-link:hover::after, .nav-link:focus-visible::after { width:100%; }
+    .nav-link:focus-visible { outline:none; color: var(--terracotta); }
+
+    /* Reveal on scroll */
+    .reveal { opacity:0; transform: translateY(28px); transition: opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1); }
+    .reveal.in { opacity:1; transform:none; }
+
+    /* Slow float for hero accents */
+    @keyframes floaty { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-14px) } }
+    .floaty { animation: floaty 9s ease-in-out infinite; }
+
+    /* Image watercolor framing */
+    .wc-frame { position:relative; }
+    .wc-frame img { display:block; width:100%; height:100%; object-fit:cover; }
+
+    /* Decorative torn paper / soft section edge */
+    .soft-divider { height: 90px; background: linear-gradient(180deg, transparent, rgba(244,236,221,.85)); }
+
+    details > summary { list-style:none; cursor:pointer; }
+    details > summary::-webkit-details-marker { display:none; }
+    details[open] .faq-icon { transform: rotate(45deg); }
+    .faq-icon { transition: transform .3s ease; }
+
+    input, textarea {
+      font-family:"Jost",sans-serif; font-weight:300;
+      background: rgba(255,255,255,.6); border:1px solid rgba(171,145,143,.4);
+      transition: border-color .25s, box-shadow .25s, background-color .25s;
+    }
+    input:focus, textarea:focus {
+      outline:none; border-color: var(--teal); background: rgba(255,255,255,.9);
+      box-shadow: 0 0 0 4px rgba(80,124,134,.13);
+    }
+    ::placeholder { color: #9a8e7f; opacity:1; }
+
+    ::selection { background: rgba(138,75,45,.2); }
+    ::-webkit-scrollbar { width: 11px; }
+    ::-webkit-scrollbar-track { background: var(--paper); }
+    ::-webkit-scrollbar-thumb { background: var(--sand); border-radius:10px; border:3px solid var(--paper); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--rose); }
+
+    .float-wa { box-shadow: 0 12px 28px -10px rgba(15,85,99,.55); transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s, opacity .3s ease; }
+    .float-wa:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 18px 34px -12px rgba(15,85,99,.65); }
+    /* Tuck the floating button away once the footer (which has its own
+       WhatsApp link) is in view, so it never covers the footer copy */
+    .float-wa.is-hidden { opacity: 0; transform: translateY(12px) scale(.85); pointer-events: none; }
+
+    /* ============================================================
+       VIDEO HERO — full-bleed autoplay loop with brand copy overlay
+       ============================================================ */
+    .video-hero {
+      position: relative; min-height: 100svh; display: flex; align-items: flex-start;
+      overflow: hidden; background: var(--paper); isolation: isolate;
+    }
+    .video-hero-media {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: 60% center; z-index: 0;
+    }
+    /* desktop: dislocate the scene to the right (left-anchored zoom) so the
+       sunset sits near the right edge and the copy reaches at most the
+       makeup artist's back */
+    @media (min-width: 901px) {
+      .video-hero-media {
+        object-position: left center;
+        transform: scale(1.2);
+        transform-origin: left center;
+      }
+    }
+    /* paper scrim for text legibility — light from the text side, fading to clear video */
+    .video-hero-scrim {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background:
+        linear-gradient(100deg, rgba(251,246,236,.97) 0%, rgba(251,246,236,.86) 32%, rgba(251,246,236,.5) 54%, rgba(251,246,236,0) 74%),
+        linear-gradient(0deg, rgba(251,246,236,.5) 0%, rgba(251,246,236,0) 24%);
+    }
+    .video-hero-content { position: relative; z-index: 2; width: 100%; }
+    /* soft paper halo keeps copy legible over busy frames; buttons opt out */
+    .hero-copy-shadow { text-shadow: 0 1px 16px rgba(251,246,236,.82), 0 1px 3px rgba(251,246,236,.65); }
+    .hero-copy-shadow .btn { text-shadow: none; }
+
+    @media (max-width: 900px) {
+      .video-hero { align-items: flex-end; }
+      /* pan the framing toward the artist (left of the source) so her back and
+         the bride stay visible above the copy */
+      .video-hero-media { object-position: 45% center; }
+      /* near-solid base from the bottom up to the middle of the primary CTA
+         (~140px), then return to the soft veil so the dress and hands stay visible */
+      .video-hero-scrim {
+        background:
+          linear-gradient(0deg, rgba(251,246,236,.97) 0, rgba(251,246,236,.96) 140px, rgba(251,246,236,.55) 200px, rgba(251,246,236,.5) 50%, rgba(251,246,236,.22) 70%, rgba(251,246,236,0) 88%);
+      }
+      /* lift the eyebrow off the busy scene without adding background wash */
+      .video-hero-content .eyebrow {
+        color: var(--deep-teal); font-weight: 600;
+        text-shadow: 0 1px 10px rgba(251,246,236,.95), 0 0 5px rgba(251,246,236,.9), 0 1px 2px rgba(251,246,236,.8);
+      }
+    }
+  </style>
+  <!-- ============ PORTFÓLIO — page-specific ============ -->
+  <style>
+    /* Page head: sits under the fixed nav */
+    .pf-top { padding-top: clamp(8.5rem, 16vh, 11.5rem); }
+
+    /* Index of projects — a real table of contents, not decoration */
+    .pf-index { display:flex; flex-wrap:wrap; gap:.4rem 1.6rem; }
+    .pf-index a {
+      font-family:"Jost",sans-serif; font-size:.82rem; letter-spacing:.06em;
+      color: var(--deep-teal); text-decoration:none; padding:.2rem 0;
+      border-bottom:1px solid rgba(80,124,134,.3);
+      transition: color .25s ease, border-color .25s ease, transform .25s cubic-bezier(.22,1,.36,1);
+    }
+    .pf-index a:hover { color: var(--terracotta); border-color: var(--terracotta); transform: translateY(-2px); }
+    .pf-index a:focus-visible { outline:2px solid var(--deep-teal); outline-offset:4px; border-radius:2px; }
+
+    /* ---- The print: every photograph on this page is framed the same way ---- */
+    .pf-photo {
+      position:relative; display:block; width:100%; padding:0; border:0; margin:0;
+      overflow:hidden; border-radius:1.5rem; cursor: zoom-in;
+      background: rgba(255,253,248,.8);
+      box-shadow: 0 1px 2px rgba(71,59,49,.05),
+                  0 24px 50px -28px rgba(80,124,134,.5),
+                  0 10px 22px -16px rgba(138,75,45,.24);
+      transition: transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s cubic-bezier(.22,1,.36,1);
+    }
+    .pf-photo img { display:block; width:100%; height:auto;
+      transition: transform .8s cubic-bezier(.22,1,.36,1); }
+    /* colour treatment + foot gradient, per the house image language */
+    .pf-photo::before {
+      content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
+      background: radial-gradient(120% 90% at 50% 0%, rgba(206,196,178,.55), rgba(80,124,134,.45) 100%);
+      mix-blend-mode: multiply; opacity:.18; transition: opacity .5s ease;
+    }
+    .pf-photo::after {
+      content:""; position:absolute; inset:0; z-index:3; pointer-events:none;
+      background: linear-gradient(to top, rgba(15,85,99,.45), rgba(15,85,99,0) 38%);
+      opacity:.8; transition: opacity .5s ease;
+    }
+    /* hairline mat so the print reads as paper, not a pasted rectangle */
+    .pf-photo .pf-mat {
+      position:absolute; inset:0; z-index:4; pointer-events:none; border-radius:inherit;
+      box-shadow: inset 0 0 0 1px rgba(255,253,248,.5), inset 0 0 0 2px rgba(171,145,143,.28);
+    }
+    .pf-photo:hover, .pf-photo:focus-visible { transform: translateY(-5px);
+      box-shadow: 0 1px 2px rgba(71,59,49,.05),
+                  0 38px 70px -30px rgba(80,124,134,.62),
+                  0 16px 30px -18px rgba(138,75,45,.3); }
+    .pf-photo:hover img, .pf-photo:focus-visible img { transform: scale(1.045); }
+    .pf-photo:hover::before, .pf-photo:focus-visible::before { opacity:.06; }
+    .pf-photo:hover::after,  .pf-photo:focus-visible::after  { opacity:.45; }
+    .pf-photo:focus-visible { outline:2px solid var(--deep-teal); outline-offset:5px; }
+
+    /* the zoom cue */
+    .pf-zoom {
+      position:absolute; z-index:5; right:.85rem; bottom:.85rem;
+      height:2.25rem; width:2.25rem; border-radius:999px;
+      display:grid; place-items:center; color:#FDF7EE;
+      background: rgba(15,85,99,.55); backdrop-filter: blur(4px);
+      opacity:0; transform: translateY(6px) scale(.9);
+      transition: opacity .35s ease, transform .35s cubic-bezier(.22,1,.36,1);
+      pointer-events:none;
+    }
+    .pf-photo:hover .pf-zoom, .pf-photo:focus-visible .pf-zoom { opacity:1; transform:none; }
+
+    /* ---- Featured project ----
+       Desktop: two columns, the right one hung lower.
+       Phones: a mosaic — the walk down the aisle wide, the family portrait
+       wide, then the two matching 9:16 frames paired side by side. */
+    .f-grid { display:grid; gap: clamp(.75rem, 2.2vw, 1.75rem); }
+    .f-col  { display:flex; flex-direction:column; gap: clamp(1rem, 2.2vw, 1.75rem); }
+    @media (max-width: 899px) {
+      .f-grid { grid-template-columns: 1fr 1fr; align-items:start; }
+      .f-col  { display: contents; }
+      .f-col-a > :nth-child(1) { order:1; grid-column: 1 / -1; }
+      .f-col-b > :nth-child(1) { order:2; grid-column: 1 / -1; }
+      .f-col-b > :nth-child(2) { order:3; }
+      .f-col-a > :nth-child(2) { order:4; }
+    }
+    @media (min-width: 900px) {
+      .f-grid { grid-template-columns: 1fr 1fr; align-items:start; }
+      .f-col-b { margin-top: clamp(2rem, 4.5vw, 3.75rem); }
+    }
+
+    /* ---- Ensaio strips: a rail on phones, a staggered row on desktop ---- */
+    .pf-rail {
+      display:flex; gap: 1rem; overflow-x:auto; overscroll-behavior-x:contain;
+      scroll-snap-type: x mandatory; -webkit-overflow-scrolling:touch;
+      padding: .35rem 1.25rem 1.25rem; margin-inline: -1.25rem;
+      scrollbar-width:none;
+    }
+    .pf-rail::-webkit-scrollbar { display:none; }
+    .pf-rail > * { flex: 0 0 74%; scroll-snap-align:center; }
+    @media (min-width: 860px) {
+      .pf-rail { display:grid; grid-template-columns: repeat(var(--cols, 4), 1fr);
+        gap: clamp(1rem, 1.8vw, 1.5rem); overflow:visible;
+        padding:0; margin-inline:0; align-items:start; }
+      .pf-rail > * { flex:none; }
+      .pf-rail > :nth-child(even) { margin-top: clamp(1.25rem, 3.5vw, 3rem); }
+    }
+    .pf-swipe { display:flex; align-items:center; gap:.5rem; }
+    @media (min-width: 860px) { .pf-swipe { display:none; } }
+
+    /* ---- Project header rule ---- */
+    .pf-head { border-top:1px solid rgba(171,145,143,.35); padding-top: 1.5rem; }
+    .pf-tag {
+      display:inline-flex; align-items:center; gap:.45rem;
+      font-family:"Jost",sans-serif; font-size:.68rem; font-weight:500;
+      text-transform:uppercase; letter-spacing:.22em; color: var(--deep-teal);
+      background: rgba(176,202,208,.28); border:1px solid rgba(80,124,134,.28);
+      border-radius:999px; padding:.4rem .85rem;
+    }
+
+    /* ---- Lightbox ---- */
+    .lb { position:fixed; inset:0; z-index:100; display:none; }
+    .lb.open { display:block; }
+    .lb-scrim { position:absolute; inset:0; background: rgba(28,44,48,.95); backdrop-filter: blur(8px);
+      opacity:0; transition: opacity .35s ease; }
+    .lb.open .lb-scrim { opacity:1; }
+    .lb-stage { position:absolute; inset:0; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; padding: 4.5rem 1rem 5.5rem; gap:1rem; }
+    .lb-img { max-width:min(100%, 1100px); max-height:100%; width:auto; height:auto;
+      object-fit:contain; border-radius:.75rem; box-shadow: 0 40px 90px -30px rgba(0,0,0,.7);
+      opacity:0; transform: scale(.97); transition: opacity .4s ease, transform .4s cubic-bezier(.22,1,.36,1); }
+    .lb.open .lb-img { opacity:1; transform:none; }
+    .lb-cap { color: rgba(251,246,236,.82); font-family:"Jost",sans-serif; font-size:.82rem;
+      letter-spacing:.06em; text-align:center; max-width:46ch; }
+    .lb-cap b { font-family:"Cormorant Garamond",serif; font-weight:600; font-size:1.05rem;
+      color:#FDF7EE; letter-spacing:.02em; }
+    .lb-btn { position:absolute; z-index:2; height:3rem; width:3rem; border-radius:999px;
+      display:grid; place-items:center; color:#FDF7EE; border:1px solid rgba(251,246,236,.28);
+      background: rgba(251,246,236,.1); cursor:pointer;
+      transition: transform .3s cubic-bezier(.22,1,.36,1), background-color .3s ease, border-color .3s ease; }
+    .lb-btn:hover { background: rgba(251,246,236,.22); border-color: rgba(251,246,236,.6); transform: scale(1.06); }
+    .lb-btn:active { transform: scale(.95); }
+    .lb-btn:focus-visible { outline:2px solid #FDF7EE; outline-offset:3px; }
+    .lb-close { top:1.25rem; right:1.25rem; }
+    .lb-prev  { left:1.25rem;  top:50%; margin-top:-1.5rem; }
+    .lb-next  { right:1.25rem; top:50%; margin-top:-1.5rem; }
+    @media (max-width: 640px) {
+      .lb-prev { left:.75rem; top:auto; bottom:1.1rem; margin-top:0; }
+      .lb-next { right:.75rem; top:auto; bottom:1.1rem; margin-top:0; }
+      .lb-stage { padding: 4.5rem .75rem 5.5rem; }
+    }
+    body.lb-lock { overflow:hidden; }
+  </style>
+
+</head>
+
+<body class="antialiased">
+
+  <!-- Beach wave displacement filter -->
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none;">
+    <filter id="beach-wave" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.006 0.014" numOctaves="3" seed="9" stitchTiles="stitch" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="70" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+  <div class="beach-bg" aria-hidden="true">
+    <div class="bb-grain"></div>
+    <div class="bb-pool"></div>
+    <div class="bb-paper"></div>
+    <div class="bb-sand"></div>
+    <div class="bb-waves"></div>
+  </div>
+
+  <!-- ============ NAV ============ -->
+
+  <!-- ============ NAV ============ -->
+  <header id="top" class="fixed top-0 inset-x-0 z-50 transition-all duration-500" data-nav>
+    <nav class="mx-auto max-w-7xl px-5 lg:px-10">
+      <div data-navbar class="mt-3 flex items-center justify-between rounded-full px-4 sm:px-6 py-2 transition-all duration-500">
+        <a href="index.html" class="flex items-center gap-3 group" aria-label="Arih Ateliê — início">
+          <img src="brand_assets/logo-emblem.png" alt="Logotipo Arih Ateliê" class="h-[4.25rem] w-[4.25rem] rounded-full object-cover ring-1 ring-sand/70 transition-transform duration-500 group-hover:scale-105" style="object-position: 50% 45%;" />
+          <span class="flex flex-col leading-none">
+            <span class="font-display text-2xl font-semibold text-terracotta tracking-wide">Arih Ateliê</span>
+            <span class="eyebrow !text-[0.55rem] !tracking-[0.28em] mt-0.5 text-teal/90">Natural Bridal Beauty</span>
+          </span>
+        </a>
+
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="index.html#sobre" class="nav-link">Sobre</a>
+          <a href="index.html#servicos" class="nav-link">Serviços</a>
+          <a href="portfolio.html" class="nav-link text-terracotta" aria-current="page">Portfólio</a>
+          <a href="index.html#processo" class="nav-link">Como funciona</a>
+          <a href="index.html#contato" class="btn btn-primary !py-2.5 !px-6 !text-sm">Agendar atendimento</a>
+        </div>
+
+        <button id="menuBtn" class="lg:hidden p-2 text-terracotta" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="lg:hidden hidden mx-5 mt-2 rounded-3xl card !backdrop-blur-xl p-6">
+      <div class="flex flex-col gap-1 text-lg">
+        <a href="index.html#sobre" class="nav-link py-2">Sobre</a>
+        <a href="index.html#servicos" class="nav-link py-2">Serviços</a>
+        <a href="portfolio.html" class="nav-link py-2 text-terracotta" aria-current="page">Portfólio</a>
+        <a href="index.html#processo" class="nav-link py-2">Como funciona</a>
+        <a href="index.html#faq" class="nav-link py-2">Dúvidas</a>
+        <a href="index.html#contato" class="btn btn-primary mt-3">Agendar atendimento</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+  <!-- ============ CABEÇALHO DA PÁGINA ============ -->
+  <section class="pf-top relative pb-[var(--space)] overflow-hidden">
+    <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
+      <div class="grid lg:grid-cols-[1.25fr_.75fr] gap-10 lg:gap-16 items-end">
+        <div>
+          <p class="eyebrow reveal">Portfólio</p>
+          <h1 class="reveal mt-5 font-display font-semibold text-[clamp(2.6rem,8vw,5.4rem)] leading-[0.95] text-terracotta" style="letter-spacing:-0.03em;">
+            O trabalho,<br><span class="italic font-medium text-sienna">de perto.</span>
+          </h1>
+        </div>
+        <div class="reveal">
+          <p class="text-[1.05rem] text-ink/85 leading-relaxed">
+            Um casamento real e quatro ensaios fotográficos. Fotos abertas e de perto, para você ver o acabamento da pele, a textura do cabelo e como a beleza se comporta no sol, no vento e depois de horas de festa.
+          </p>
+          <p class="script-accent text-xl mt-4">Toque em qualquer foto para ampliar</p>
+        </div>
+      </div>
+
+      <nav class="reveal mt-12 pt-6 border-t border-rose/35 pf-index" aria-label="Projetos nesta página">
+        <a href="#edu-guedes">Casamento Edu Guedes</a>
+        <a href="#maya">Maya</a>
+        <a href="#iza">Iza</a>
+        <a href="#nina">Nina</a>
+        <a href="#vitoria">Vitória</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ============ DESTAQUE — Casamento Edu Guedes ============ -->
+  <section id="edu-guedes" class="relative pb-[var(--space)] overflow-hidden">
+    <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
+
+      <div class="pf-head grid lg:grid-cols-[1fr_.85fr] gap-6 lg:gap-16 items-start">
+        <div>
+          <span class="pf-tag reveal">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.6 6.5L21 11l-6.4 2.5L12 20l-2.6-6.5L3 11l6.4-2.5L12 2z"/></svg>
+            Casamento real
+          </span>
+          <h2 class="reveal mt-4 font-display font-semibold text-[clamp(2.1rem,5vw,3.6rem)] leading-[1] text-terracotta" style="letter-spacing:-0.025em;">
+            Casamento<br class="hidden sm:block"> Edu Guedes
+          </h2>
+        </div>
+        <div class="reveal">
+          <p class="text-[1.02rem] text-ink/85 leading-relaxed">
+            Um casamento ao ar livre, com família grande e cortejo de crianças. Penteados e maquiagem preparados para o fim de tarde no jardim — e para a festa que seguiu noite adentro.
+          </p>
+          <ul class="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-xs text-deep-teal/85" style="font-family:'Jost',sans-serif; letter-spacing:.08em;">
+            <li>Cerimônia e festa</li>
+            <li>Família e madrinhas</li>
+            <li>Beleza para o dia inteiro</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="f-grid mt-10 lg:mt-14">
+        <div class="f-col f-col-a">
+          <button type="button" class="pf-photo reveal " data-full="assets/web/casamentoeduguedes/04.jpg" data-project="Casamento Edu Guedes" data-alt="Pai e filha de mãos dadas, caminhando pelo tapete branco do jardim" aria-label="Ampliar foto: Pai e filha de mãos dadas, caminhando pelo tapete branco do jardim"><img src="assets/web/casamentoeduguedes/04.jpg" width="1212" height="1600" sizes="(min-width: 900px) 52vw, 92vw" alt="Pai e filha de mãos dadas, caminhando pelo tapete branco do jardim" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button>
+          <button type="button" class="pf-photo reveal " data-full="assets/web/casamentoeduguedes/03.jpg" data-project="Casamento Edu Guedes" data-alt="Os noivos com a família no jardim iluminado, durante a festa à noite" aria-label="Ampliar foto: Os noivos com a família no jardim iluminado, durante a festa à noite"><img src="assets/web/casamentoeduguedes/03.jpg" width="906" height="1600" sizes="(min-width: 900px) 52vw, 92vw" alt="Os noivos com a família no jardim iluminado, durante a festa à noite" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button>
+        </div>
+        <div class="f-col f-col-b">
+          <button type="button" class="pf-photo reveal " data-full="assets/web/casamentoeduguedes/01.jpg" data-project="Casamento Edu Guedes" data-alt="Família e madrinhas reunidas na entrada do salão, antes da cerimônia" aria-label="Ampliar foto: Família e madrinhas reunidas na entrada do salão, antes da cerimônia"><img src="assets/web/casamentoeduguedes/01.jpg" width="1600" height="1600" sizes="(min-width: 900px) 44vw, 92vw" alt="Família e madrinhas reunidas na entrada do salão, antes da cerimônia" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button>
+          <button type="button" class="pf-photo reveal " data-full="assets/web/casamentoeduguedes/02.jpg" data-project="Casamento Edu Guedes" data-alt="Cortejo de crianças levando buquês pelo caminho do jardim" aria-label="Ampliar foto: Cortejo de crianças levando buquês pelo caminho do jardim"><img src="assets/web/casamentoeduguedes/02.jpg" width="910" height="1600" sizes="(min-width: 900px) 44vw, 92vw" alt="Cortejo de crianças levando buquês pelo caminho do jardim" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ ENSAIOS & EDITORIAIS ============ -->
+  <section id="ensaios" class="relative py-[var(--space)] overflow-hidden">
+    <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
+
+      <div class="grid lg:grid-cols-[1fr_.85fr] gap-6 lg:gap-16 items-end">
+        <div>
+          <p class="eyebrow reveal">Ensaios &amp; editoriais</p>
+          <h2 class="reveal mt-4 font-display font-semibold text-[clamp(1.9rem,4.4vw,3rem)] leading-[1.05] text-terracotta" style="letter-spacing:-0.02em;">
+            Produções de estúdio<br class="hidden sm:block"> e locação
+          </h2>
+        </div>
+        <p class="reveal text-[0.98rem] text-ink/75 leading-relaxed">
+          Estes não são casamentos reais: são ensaios fotográficos, feitos para testar acabamento, longevidade e o comportamento da maquiagem em cada tipo de luz.
+        </p>
+      </div>
+
+      <!-- Maya -->
+      <article id="maya" class="mt-16 lg:mt-24 scroll-mt-32">
+        <div class="pf-head flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 md:gap-10">
+          <div class="reveal flex items-baseline gap-4">
+            <h3 class="font-display font-semibold text-[clamp(1.7rem,3.4vw,2.5rem)] leading-none text-terracotta" style="letter-spacing:-0.02em;">Maya</h3>
+            <span class="eyebrow !text-[0.62rem] !tracking-[0.24em] text-teal/90">Noiva clássica</span>
+          </div>
+          <p class="reveal text-sm text-ink/75 leading-relaxed md:max-w-md">Pérolas, pele de acabamento acetinado e um coque baixo com mechas soltas no rosto. Fotografado em luz natural, junto à porta de madeira.</p>
+        </div>
+        
+        <p class="pf-swipe eyebrow !text-[0.6rem] !tracking-[0.26em] mt-4 mb-1 text-teal/80">Deslize para ver mais<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></p>
+        <div class="pf-rail mt-3 md:mt-8" style="--cols:4;"><button type="button" class="pf-photo reveal " data-full="assets/web/noivamaya/01.jpg" data-project="Maya" data-alt="Noiva com vestido bordado de pérolas, coque baixo e maquiagem em tons neutros" aria-label="Ampliar foto: Noiva com vestido bordado de pérolas, coque baixo e maquiagem em tons neutros"><img src="assets/web/noivamaya/01.jpg" width="900" height="1600" sizes="(min-width: 860px) 22vw, 74vw" alt="Noiva com vestido bordado de pérolas, coque baixo e maquiagem em tons neutros" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button><button type="button" class="pf-photo reveal " data-full="assets/web/noivamaya/02.jpg" data-project="Maya" data-alt="Noiva apoiada em uma porta de madeira, de perfil, com mechas soltas no rosto" aria-label="Ampliar foto: Noiva apoiada em uma porta de madeira, de perfil, com mechas soltas no rosto"><img src="assets/web/noivamaya/02.jpg" width="900" height="1600" sizes="(min-width: 860px) 22vw, 74vw" alt="Noiva apoiada em uma porta de madeira, de perfil, com mechas soltas no rosto" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button><button type="button" class="pf-photo reveal " data-full="assets/web/noivamaya/03.jpg" data-project="Maya" data-alt="Noiva sentada em cadeira antiga, olhando para a câmera, pele com acabamento acetinado" aria-label="Ampliar foto: Noiva sentada em cadeira antiga, olhando para a câmera, pele com acabamento acetinado"><img src="assets/web/noivamaya/03.jpg" width="900" height="1600" sizes="(min-width: 860px) 22vw, 74vw" alt="Noiva sentada em cadeira antiga, olhando para a câmera, pele com acabamento acetinado" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button><button type="button" class="pf-photo reveal " data-full="assets/web/noivamaya/04.jpg" data-project="Maya" data-alt="Close do rosto da noiva: sombra esfumada, cílios definidos e boca rosada" aria-label="Ampliar foto: Close do rosto da noiva: sombra esfumada, cílios definidos e boca rosada"><img src="assets/web/noivamaya/04.jpg" width="900" height="1600" sizes="(min-width: 860px) 22vw, 74vw" alt="Close do rosto da noiva: sombra esfumada, cílios definidos e boca rosada" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button></div>
+      </article>
+
+      <!-- Iza -->
+      <article id="iza" class="mt-16 lg:mt-24 scroll-mt-32">
+        <div class="pf-head flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 md:gap-10">
+          <div class="reveal flex items-baseline gap-4">
+            <h3 class="font-display font-semibold text-[clamp(1.7rem,3.4vw,2.5rem)] leading-none text-terracotta" style="letter-spacing:-0.02em;">Iza</h3>
+            <span class="eyebrow !text-[0.62rem] !tracking-[0.24em] text-teal/90">Pé na areia</span>
+          </div>
+          <p class="reveal text-sm text-ink/75 leading-relaxed md:max-w-md">Sol a pino na praia: turbante, renda e uma maquiagem construída para não ceder ao calor nem à maresia.</p>
+        </div>
+        
+        <p class="pf-swipe eyebrow !text-[0.6rem] !tracking-[0.26em] mt-4 mb-1 text-teal/80">Deslize para ver mais<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></p>
+        <div class="pf-rail mt-3 md:mt-8" style="--cols:4;"><button type="button" class="pf-photo reveal " data-full="assets/web/noivaiza/01.jpg" data-project="Iza" data-alt="Noiva deitada na areia, vestido de renda espalhado e turbante branco" aria-label="Ampliar foto: Noiva deitada na areia, vestido de renda espalhado e turbante branco"><img src="assets/web/noivaiza/01.jpg" width="1070" height="1600" sizes="(min-width: 860px) 22vw, 74vw" alt="Noiva deitada na areia, vestido de renda espalhado e turbante branco" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button><button type="button" class="pf-photo reveal " data-full="assets/web/noivaiza/02.jpg" data-project="Iza" data-alt="Retrato da noiva na areia, sorrindo com a mão no cabelo" aria-label="Ampliar foto: Retrato da noiva na areia, sorrindo com a mão no cabelo"><img src="assets/web/noivaiza/02.jpg" width="900" height="1600" sizes="(min-width: 860px) 22vw, 74vw" alt="Retrato da noiva na areia, sorrindo com a mão no cabelo" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button><button type="button" class="pf-photo reveal " data-full="assets/web/noivaiza/03.jpg" data-project="Iza" data-alt="Noiva em pé sobre as pedras, de frente para o mar, com a cauda de renda estendida" aria-label="Ampliar foto: Noiva em pé sobre as pedras, de frente para o mar, com a cauda de renda estendida"><img src="assets/web/noivaiza/03.jpg" width="848" height="1600" sizes="(min-width: 860px) 22vw, 74vw" alt="Noiva em pé sobre as pedras, de frente para o mar, com a cauda de renda estendida" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button><button type="button" class="pf-photo reveal " data-full="assets/web/noivaiza/04.jpg" data-project="Iza" data-alt="Noiva na beira do mar, rosto erguido ao sol, vestido de renda ao vento" aria-label="Ampliar foto: Noiva na beira do mar, rosto erguido ao sol, vestido de renda ao vento"><img src="assets/web/noivaiza/04.jpg" width="1162" height="1600" sizes="(min-width: 860px) 22vw, 74vw" alt="Noiva na beira do mar, rosto erguido ao sol, vestido de renda ao vento" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button></div>
+      </article>
+
+      <!-- Nina -->
+      <article id="nina" class="mt-16 lg:mt-24 scroll-mt-32">
+        <div class="pf-head flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 md:gap-10">
+          <div class="reveal flex items-baseline gap-4">
+            <h3 class="font-display font-semibold text-[clamp(1.7rem,3.4vw,2.5rem)] leading-none text-terracotta" style="letter-spacing:-0.02em;">Nina</h3>
+            <span class="eyebrow !text-[0.62rem] !tracking-[0.24em] text-teal/90">Fim de tarde</span>
+          </div>
+          <p class="reveal text-sm text-ink/75 leading-relaxed md:max-w-md">Luz dourada nas pedras. Acabamento natural na pele e um preso com textura, feito para o vento do mar.</p>
+        </div>
+        <div class="mt-8 lg:mt-10"><button type="button" class="pf-photo reveal " data-full="assets/web/nina/01.jpg" data-project="Nina" data-alt="Noiva sentada na pedra, de frente para o mar, no fim da tarde" aria-label="Ampliar foto: Noiva sentada na pedra, de frente para o mar, no fim da tarde"><img src="assets/web/nina/01.jpg" width="1600" height="1066" sizes="(min-width: 860px) 88vw, 92vw" alt="Noiva sentada na pedra, de frente para o mar, no fim da tarde" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button></div>
+        <p class="pf-swipe eyebrow !text-[0.6rem] !tracking-[0.26em] mt-4 mb-1 text-teal/80">Deslize para ver mais<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></p>
+        <div class="pf-rail mt-3 md:mt-8" style="--cols:3;"><button type="button" class="pf-photo reveal " data-full="assets/web/nina/02.jpg" data-project="Nina" data-alt="Noiva deitada sobre a pedra, vestido curto de renda, sob luz dourada" aria-label="Ampliar foto: Noiva deitada sobre a pedra, vestido curto de renda, sob luz dourada"><img src="assets/web/nina/02.jpg" width="1066" height="1600" sizes="(min-width: 860px) 29vw, 74vw" alt="Noiva deitada sobre a pedra, vestido curto de renda, sob luz dourada" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button><button type="button" class="pf-photo reveal " data-full="assets/web/nina/03.jpg" data-project="Nina" data-alt="Perfil da noiva ao sol baixo, cabelo preso com fios soltos e pele iluminada" aria-label="Ampliar foto: Perfil da noiva ao sol baixo, cabelo preso com fios soltos e pele iluminada"><img src="assets/web/nina/03.jpg" width="900" height="1600" sizes="(min-width: 860px) 29vw, 74vw" alt="Perfil da noiva ao sol baixo, cabelo preso com fios soltos e pele iluminada" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button><button type="button" class="pf-photo reveal " data-full="assets/web/nina/04.jpg" data-project="Nina" data-alt="Retrato da noiva olhando para o horizonte, brinco de pérola e maquiagem natural" aria-label="Ampliar foto: Retrato da noiva olhando para o horizonte, brinco de pérola e maquiagem natural"><img src="assets/web/nina/04.jpg" width="900" height="1600" sizes="(min-width: 860px) 29vw, 74vw" alt="Retrato da noiva olhando para o horizonte, brinco de pérola e maquiagem natural" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button></div>
+      </article>
+
+      <!-- Vitória -->
+      <article id="vitoria" class="mt-16 lg:mt-24 scroll-mt-32">
+        <div class="pf-head flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 md:gap-10">
+          <div class="reveal flex items-baseline gap-4">
+            <h3 class="font-display font-semibold text-[clamp(1.7rem,3.4vw,2.5rem)] leading-none text-terracotta" style="letter-spacing:-0.02em;">Vitória</h3>
+            <span class="eyebrow !text-[0.62rem] !tracking-[0.24em] text-teal/90">Retrô</span>
+          </div>
+          <p class="reveal text-sm text-ink/75 leading-relaxed md:max-w-md">Boca vermelha, ondas marcadas e touca de renda — referência dos anos 40 lida em chave contemporânea.</p>
+        </div>
+        
+        <p class="pf-swipe eyebrow !text-[0.6rem] !tracking-[0.26em] mt-4 mb-1 text-teal/80">Deslize para ver mais<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></p>
+        <div class="pf-rail mt-3 md:mt-8" style="--cols:5;"><button type="button" class="pf-photo reveal " data-full="assets/web/vitoria/01.jpg" data-project="Vitória" data-alt="Retrato da noiva no jardim, boca vermelha e ondas marcadas no cabelo curto" aria-label="Ampliar foto: Retrato da noiva no jardim, boca vermelha e ondas marcadas no cabelo curto"><img src="assets/web/vitoria/01.jpg" width="900" height="1600" sizes="(min-width: 860px) 17vw, 74vw" alt="Retrato da noiva no jardim, boca vermelha e ondas marcadas no cabelo curto" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button><button type="button" class="pf-photo reveal " data-full="assets/web/vitoria/02.jpg" data-project="Vitória" data-alt="Noiva em pé na porta de madeira, vestido de renda com saia plissada" aria-label="Ampliar foto: Noiva em pé na porta de madeira, vestido de renda com saia plissada"><img src="assets/web/vitoria/02.jpg" width="900" height="1600" sizes="(min-width: 860px) 17vw, 74vw" alt="Noiva em pé na porta de madeira, vestido de renda com saia plissada" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button><button type="button" class="pf-photo reveal " data-full="assets/web/vitoria/03.jpg" data-project="Vitória" data-alt="Close do rosto da noiva, batom vermelho e olhar para a câmera" aria-label="Ampliar foto: Close do rosto da noiva, batom vermelho e olhar para a câmera"><img src="assets/web/vitoria/03.jpg" width="900" height="1600" sizes="(min-width: 860px) 17vw, 74vw" alt="Close do rosto da noiva, batom vermelho e olhar para a câmera" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button><button type="button" class="pf-photo reveal " data-full="assets/web/vitoria/04.jpg" data-project="Vitória" data-alt="Noiva sentada em um banco de troncos, vestido longo e véu de renda" aria-label="Ampliar foto: Noiva sentada em um banco de troncos, vestido longo e véu de renda"><img src="assets/web/vitoria/04.jpg" width="900" height="1600" sizes="(min-width: 860px) 17vw, 74vw" alt="Noiva sentada em um banco de troncos, vestido longo e véu de renda" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button><button type="button" class="pf-photo reveal " data-full="assets/web/vitoria/05.jpg" data-project="Vitória" data-alt="Perfil da noiva com touca de renda sobre o cabelo ondulado" aria-label="Ampliar foto: Perfil da noiva com touca de renda sobre o cabelo ondulado"><img src="assets/web/vitoria/05.jpg" width="900" height="1600" sizes="(min-width: 860px) 17vw, 74vw" alt="Perfil da noiva com touca de renda sobre o cabelo ondulado" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="relative pb-[var(--space)] overflow-hidden">
+    <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
+      <div class="reveal card rounded-[2rem] px-7 py-12 sm:px-12 sm:py-16 text-center max-w-4xl mx-auto">
+        <p class="eyebrow">Agenda aberta</p>
+        <h2 class="mt-4 font-display font-semibold text-[clamp(1.9rem,4.4vw,3rem)] leading-[1.05] text-terracotta" style="letter-spacing:-0.02em;">
+          O próximo retrato<br class="hidden sm:block"> pode ser o seu.
+        </h2>
+        <p class="mt-5 text-[1.02rem] text-ink/85 leading-relaxed max-w-xl mx-auto">
+          Conte a data, o local e o que você imagina para o seu dia. Respondemos com uma proposta e a disponibilidade da agenda.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="index.html#contato" class="btn btn-primary">Solicitar orçamento</a>
+          <a href="https://wa.me/5512992364249?text=Ol%C3%A1%20Arih%2C%20vi%20o%20portf%C3%B3lio%20e%20gostaria%20de%20um%20or%C3%A7amento" target="_blank" rel="noopener" class="btn btn-ghost">Falar no WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+  <!-- ============ FOOTER ============ -->
+  <footer id="siteFooter" class="beach-footer relative overflow-hidden pt-16 pb-10 border-t border-rose/20">
+    <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
+      <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10">
+        <div>
+          <div class="flex items-center gap-3">
+            <img src="brand_assets/logo-emblem.png" alt="Logotipo Arih Ateliê" class="h-14 w-14 rounded-full object-cover ring-1 ring-sand" style="object-position:50% 45%;" />
+            <span class="font-display text-3xl font-semibold text-terracotta">Arih Ateliê</span>
+          </div>
+          <p class="footer-tagline mt-4 text-sm max-w-xs leading-relaxed">Natural Bridal Beauty. Alta performance, beleza solar e resistência à maresia — do “sim” ao nascer do sol.</p>
+          <p class="script-accent footer-script text-xl mt-4">Beauty on Demand · Destination Wedding</p>
+        </div>
+        <nav class="text-sm" aria-label="Navegação do rodapé">
+          <p class="eyebrow !text-[0.6rem] mb-4">Navegação</p>
+          <ul class="space-y-2.5">
+            <li><a href="index.html#sobre" class="nav-link">Sobre</a></li>
+            <li><a href="index.html#servicos" class="nav-link">Serviços</a></li>
+            <li><a href="portfolio.html" class="nav-link" aria-current="page">Portfólio</a></li>
+            <li><a href="index.html#processo" class="nav-link">Como funciona</a></li>
+            <li><a href="index.html#faq" class="nav-link">Dúvidas</a></li>
+          </ul>
+        </nav>
+        <div class="text-sm">
+          <p class="eyebrow !text-[0.6rem] mb-4">Contato</p>
+          <ul class="space-y-2.5 text-ink/75">
+            <li><a href="https://wa.me/5512992364249" target="_blank" rel="noopener" class="nav-link">WhatsApp</a></li>
+            <li><a href="https://instagram.com/arihatelie" target="_blank" rel="noopener" class="nav-link">@arihatelie</a></li>
+            <li>Ilhabela · São Paulo</li>
+            <li>Cascais · Portugal</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 pt-6 border-t border-rose/20 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-ink/55">
+        <p>© <span id="year"></span> Arih Ateliê. Todos os direitos reservados.</p>
+        <p>Feito com cuidado, em aquarela. ⋄ Ilhabela, Brasil</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/5512992364249?text=Ol%C3%A1%20Arih%2C%20gostaria%20de%20um%20or%C3%A7amento" target="_blank" rel="noopener" aria-label="Falar no WhatsApp" class="float-wa fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-[#25D366] text-white flex items-center justify-center">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.68-6.13A11.86 11.86 0 0 1 .16 11.9C.16 5.34 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.41c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.69-1.45L.06 24Zm6.6-3.8c1.68.99 3.28 1.58 5.4 1.58 5.45 0 9.89-4.43 9.89-9.88 0-2.64-1.03-5.12-2.9-6.99a9.82 9.82 0 0 0-6.98-2.9c-5.46 0-9.9 4.44-9.9 9.89 0 1.87.52 3.28 1.4 4.75l-.99 3.62 3.08-1.07Zm11.39-5.31c-.07-.12-.27-.2-.57-.35-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.69.25-1.28.17-1.41Z"/></svg>
+  </a>
+
+  <!-- ============ LIGHTBOX ============ -->
+  <div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+    <div class="lb-scrim" data-lb-dismiss></div>
+    <div class="lb-stage" data-lb-dismiss>
+      <img class="lb-img" id="lbImg" alt="" />
+      <p class="lb-cap" id="lbCap"></p>
+    </div>
+    <button type="button" class="lb-btn lb-close" id="lbClose" aria-label="Fechar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <button type="button" class="lb-btn lb-prev" id="lbPrev" aria-label="Foto anterior">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <button type="button" class="lb-btn lb-next" id="lbNext" aria-label="Próxima foto">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <!-- smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Nav scroll state
+    const nav = document.querySelector('[data-navbar]');
+    const onScroll = () => {
+      if (window.scrollY > 30) {
+        nav.classList.add('bg-paper/85','backdrop-blur-xl','shadow-[0_8px_30px_-12px_rgba(80,124,134,.35)]','ring-1','ring-rose/15');
+      } else {
+        nav.classList.remove('bg-paper/85','backdrop-blur-xl','shadow-[0_8px_30px_-12px_rgba(80,124,134,.35)]','ring-1','ring-rose/15');
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Hide the floating WhatsApp button while the footer is visible
+    const floatWa = document.querySelector('.float-wa');
+    const siteFooter = document.getElementById('siteFooter');
+    if (floatWa && siteFooter && 'IntersectionObserver' in window) {
+      const waIo = new IntersectionObserver((entries) => {
+        floatWa.classList.toggle('is-hidden', entries[0].isIntersecting);
+      }, { threshold: 0 });
+      waIo.observe(siteFooter);
+    }
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('hidden') === false;
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+
+    // Reveal on scroll (reveal all immediately under automation / reduced motion)
+    const reveals = document.querySelectorAll('.reveal');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (navigator.webdriver || reduceMotion || !('IntersectionObserver' in window)) {
+      reveals.forEach((el) => el.classList.add('in'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      reveals.forEach((el, i) => {
+        el.style.transitionDelay = (Math.min(i % 6, 5) * 70) + 'ms';
+        io.observe(el);
+      });
+    }
+
+    // Lenis smooth scroll (skip under reduced motion or automation)
+    const prefersReduced = reduceMotion;
+    const isAuto = navigator.webdriver;
+    if (!prefersReduced && !isAuto && typeof Lenis !== 'undefined') {
+      const lenis = new Lenis({
+        duration: 1.1,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+      });
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener('click', (e) => {
+          const id = a.getAttribute('href');
+          if (id === '#top' || id === '#') { e.preventDefault(); lenis.scrollTo(0); return; }
+          if (id.length > 1) {
+            const el = document.querySelector(id);
+            if (el) { e.preventDefault(); lenis.scrollTo(el, { offset: -110 }); }
+          }
+        });
+      });
+    } else {
+      document.querySelectorAll('a[href="#top"]').forEach((a) => {
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+        });
+      });
+    }
+
+    /* ============================================================
+       LIGHTBOX — every .pf-photo on the page, in document order
+       ============================================================ */
+    (function lightbox() {
+      const photos = Array.from(document.querySelectorAll('.pf-photo'));
+      if (!photos.length) return;
+
+      const lb      = document.getElementById('lightbox');
+      const lbImg   = document.getElementById('lbImg');
+      const lbCap   = document.getElementById('lbCap');
+      const btnClose= document.getElementById('lbClose');
+      const btnPrev = document.getElementById('lbPrev');
+      const btnNext = document.getElementById('lbNext');
+      let index = 0, lastFocus = null;
+
+      const show = (i) => {
+        index = (i + photos.length) % photos.length;
+        const el = photos[index];
+        lbImg.src = el.dataset.full;
+        lbImg.alt = el.dataset.alt;
+        lbCap.innerHTML = '<b>' + el.dataset.project + '</b><br>' + el.dataset.alt;
+      };
+
+      const open = (i) => {
+        lastFocus = document.activeElement;
+        show(i);
+        lb.classList.add('open');
+        document.body.classList.add('lb-lock');
+        btnClose.focus();
+      };
+
+      const close = () => {
+        lb.classList.remove('open');
+        document.body.classList.remove('lb-lock');
+        lbImg.removeAttribute('src');
+        if (lastFocus) lastFocus.focus();
+      };
+
+      photos.forEach((el, i) => el.addEventListener('click', () => open(i)));
+      btnClose.addEventListener('click', close);
+      btnPrev.addEventListener('click', () => show(index - 1));
+      btnNext.addEventListener('click', () => show(index + 1));
+      lb.querySelectorAll('[data-lb-dismiss]').forEach((el) => {
+        el.addEventListener('click', (e) => { if (e.target === el) close(); });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape')     { close(); }
+        if (e.key === 'ArrowLeft')  { show(index - 1); }
+        if (e.key === 'ArrowRight') { show(index + 1); }
+        if (e.key === 'Tab') {
+          // keep focus inside the dialog
+          const focusables = [btnClose, btnPrev, btnNext];
+          const pos = focusables.indexOf(document.activeElement);
+          e.preventDefault();
+          const next = e.shiftKey ? pos - 1 : pos + 1;
+          focusables[(next + focusables.length) % focusables.length].focus();
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>

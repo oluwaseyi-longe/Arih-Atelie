@@ -47,3 +47,8 @@ coverage/
 
 # Project-specific
 temporary screenshots/
+
+# Portfolio source photos — full-resolution originals (~137 MB), kept locally only.
+# The web-sized copies the site actually loads live in assets/web/ and are tracked.
+assets/*
+!assets/web/
