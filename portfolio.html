@@ -443,13 +443,6 @@
 
     /* ---- Project header rule ---- */
     .pf-head { border-top:1px solid rgba(171,145,143,.35); padding-top: 1.5rem; }
-    .pf-tag {
-      display:inline-flex; align-items:center; gap:.45rem;
-      font-family:"Jost",sans-serif; font-size:.68rem; font-weight:500;
-      text-transform:uppercase; letter-spacing:.22em; color: var(--deep-teal);
-      background: rgba(176,202,208,.28); border:1px solid rgba(80,124,134,.28);
-      border-radius:999px; padding:.4rem .85rem;
-    }
 
     /* ---- Lightbox ---- */
     .lb { position:fixed; inset:0; z-index:100; display:none; }
@@ -458,15 +451,11 @@
       opacity:0; transition: opacity .35s ease; }
     .lb.open .lb-scrim { opacity:1; }
     .lb-stage { position:absolute; inset:0; display:flex; flex-direction:column;
-      align-items:center; justify-content:center; padding: 4.5rem 1rem 5.5rem; gap:1rem; }
+      align-items:center; justify-content:center; padding: 4.5rem 1rem; gap:1rem; }
     .lb-img { max-width:min(100%, 1100px); max-height:100%; width:auto; height:auto;
       object-fit:contain; border-radius:.75rem; box-shadow: 0 40px 90px -30px rgba(0,0,0,.7);
       opacity:0; transform: scale(.97); transition: opacity .4s ease, transform .4s cubic-bezier(.22,1,.36,1); }
     .lb.open .lb-img { opacity:1; transform:none; }
-    .lb-cap { color: rgba(251,246,236,.82); font-family:"Jost",sans-serif; font-size:.82rem;
-      letter-spacing:.06em; text-align:center; max-width:46ch; }
-    .lb-cap b { font-family:"Cormorant Garamond",serif; font-weight:600; font-size:1.05rem;
-      color:#FDF7EE; letter-spacing:.02em; }
     .lb-btn { position:absolute; z-index:2; height:3rem; width:3rem; border-radius:999px;
       display:grid; place-items:center; color:#FDF7EE; border:1px solid rgba(251,246,236,.28);
       background: rgba(251,246,236,.1); cursor:pointer;
@@ -558,10 +547,7 @@
           </h1>
         </div>
         <div class="reveal">
-          <p class="text-[1.05rem] text-ink/85 leading-relaxed">
-            Um casamento real e quatro ensaios fotográficos. Fotos abertas e de perto, para você ver o acabamento da pele, a textura do cabelo e como a beleza se comporta no sol, no vento e depois de horas de festa.
-          </p>
-          <p class="script-accent text-xl mt-4">Toque em qualquer foto para ampliar</p>
+          <p class="script-accent text-xl">Toque em qualquer foto para ampliar</p>
         </div>
       </div>
 
@@ -581,23 +567,14 @@
 
       <div class="pf-head grid lg:grid-cols-[1fr_.85fr] gap-6 lg:gap-16 items-start">
         <div>
-          <span class="pf-tag reveal">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.6 6.5L21 11l-6.4 2.5L12 20l-2.6-6.5L3 11l6.4-2.5L12 2z"/></svg>
-            Casamento real
-          </span>
-          <h2 class="reveal mt-4 font-display font-semibold text-[clamp(2.1rem,5vw,3.6rem)] leading-[1] text-terracotta" style="letter-spacing:-0.025em;">
+          <h2 class="reveal font-display font-semibold text-[clamp(2.1rem,5vw,3.6rem)] leading-[1] text-terracotta" style="letter-spacing:-0.025em;">
             Casamento Ana Hickmann<br class="hidden sm:block"> e Edu Guedes
           </h2>
         </div>
         <div class="reveal">
           <p class="text-[1.02rem] text-ink/85 leading-relaxed">
-            Um casamento ao ar livre, com família grande e cortejo de crianças. Penteados e maquiagem preparados para o fim de tarde no jardim — e para a festa que seguiu noite adentro.
+            A convite de Celso Kamura, assinei a maquiagem da família de Edu Guedes para o seu casamento com Ana Hickmann. Para suas sobrinhas damas de honra, valorizei os traços jovens com delicadeza para não pesar ou envelhecer a fisionomia. Para a sua filha, optei por uma técnica de construção de pele leve inspirada nas passarelas. Para sua mãe, a escolha foi um olhar sofisticado e lábios marcantes em tom de vermelho. Para sua irmã, uma pele com viço natural, olhos esfumados em marrom profundo equilibrados em um tom labial perfeitamente integrado a sua cor natural.
           </p>
-          <ul class="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-xs text-deep-teal/85" style="font-family:'Jost',sans-serif; letter-spacing:.08em;">
-            <li>Cerimônia e festa</li>
-            <li>Família e madrinhas</li>
-            <li>Beleza para o dia inteiro</li>
-          </ul>
         </div>
       </div>
 
@@ -619,26 +596,13 @@
   <section id="ensaios" class="relative py-[var(--space)] overflow-hidden">
     <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
 
-      <div class="grid lg:grid-cols-[1fr_.85fr] gap-6 lg:gap-16 items-end">
-        <div>
-          <p class="eyebrow reveal">Ensaios &amp; editoriais</p>
-          <h2 class="reveal mt-4 font-display font-semibold text-[clamp(1.9rem,4.4vw,3rem)] leading-[1.05] text-terracotta" style="letter-spacing:-0.02em;">
-            Produções de estúdio<br class="hidden sm:block"> e locação
-          </h2>
-        </div>
-        <p class="reveal text-[0.98rem] text-ink/75 leading-relaxed">
-          Estes não são casamentos reais: são ensaios fotográficos, feitos para testar acabamento, longevidade e o comportamento da maquiagem em cada tipo de luz.
-        </p>
-      </div>
-
       <!-- Noiva Nyna -->
-      <article id="nyna" class="mt-16 lg:mt-24 scroll-mt-32">
+      <article id="nyna" class="scroll-mt-32">
         <div class="pf-head flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 md:gap-10">
           <div class="reveal flex items-baseline gap-4">
             <h3 class="font-display font-semibold text-[clamp(1.7rem,3.4vw,2.5rem)] leading-none text-terracotta" style="letter-spacing:-0.02em;">Noiva Nyna</h3>
-            <span class="eyebrow !text-[0.62rem] !tracking-[0.24em] text-teal/90">Fim de tarde</span>
           </div>
-          <p class="reveal text-sm text-ink/75 leading-relaxed md:max-w-md">Luz dourada nas pedras. Acabamento natural na pele e um preso com textura, feito para o vento do mar.</p>
+          <p class="reveal text-sm text-ink/75 leading-relaxed md:max-w-md">Para a maquiagem da noiva Nyna, apliquei a técnica second skin com acabamento glow. Um resultado sofisticado, natural e acima de tudo resistente à maresia. Olhos e lábios conversam com a mesma cintilância criando uma harmonia iluminada e atemporal. Para o penteado, escolhemos um coque desconstruído para combinar com o estilo boho da noiva.</p>
         </div>
         <div class="mt-8 lg:mt-10"><button type="button" class="pf-photo reveal " data-full="assets/web/nina/01.jpg" data-project="Noiva Nyna" data-alt="Noiva sentada na pedra, de frente para o mar, no fim da tarde" aria-label="Ampliar foto: Noiva sentada na pedra, de frente para o mar, no fim da tarde"><img src="assets/web/nina/01.jpg" width="1600" height="1066" sizes="(min-width: 860px) 88vw, 92vw" alt="Noiva sentada na pedra, de frente para o mar, no fim da tarde" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button></div>
         <p class="pf-swipe eyebrow !text-[0.6rem] !tracking-[0.26em] mt-4 mb-1 text-teal/80">Deslize para ver mais<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></p>
@@ -650,9 +614,8 @@
         <div class="pf-head flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 md:gap-10">
           <div class="reveal flex items-baseline gap-4">
             <h3 class="font-display font-semibold text-[clamp(1.7rem,3.4vw,2.5rem)] leading-none text-terracotta" style="letter-spacing:-0.02em;">Noiva Vitória</h3>
-            <span class="eyebrow !text-[0.62rem] !tracking-[0.24em] text-teal/90">Retrô</span>
           </div>
-          <p class="reveal text-sm text-ink/75 leading-relaxed md:max-w-md">Boca vermelha, ondas marcadas e touca de renda — referência dos anos 40 lida em chave contemporânea.</p>
+          <p class="reveal text-sm text-ink/75 leading-relaxed md:max-w-md">A noiva Vitória representa o glamour vintage. Optamos por uma pele com efeito natural e acabamento matte impecável, garantindo a sofisticação e a durabilidade necessária. Nos olhos, tons nude opacos trouxeram a profundidade ideal deixando o protagonismo absoluto para os lábios vermelhos. Para o cabelo escolhemos um penteado solto com divisão lateral.</p>
         </div>
         
         <p class="pf-swipe eyebrow !text-[0.6rem] !tracking-[0.26em] mt-4 mb-1 text-teal/80">Deslize para ver mais<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></p>
@@ -664,9 +627,8 @@
         <div class="pf-head flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 md:gap-10">
           <div class="reveal flex items-baseline gap-4">
             <h3 class="font-display font-semibold text-[clamp(1.7rem,3.4vw,2.5rem)] leading-none text-terracotta" style="letter-spacing:-0.02em;">Noiva Maya</h3>
-            <span class="eyebrow !text-[0.62rem] !tracking-[0.24em] text-teal/90">Clássica</span>
           </div>
-          <p class="reveal text-sm text-ink/75 leading-relaxed md:max-w-md">Pérolas, pele de acabamento acetinado e um coque baixo com mechas soltas no rosto. Fotografado em luz natural, junto à porta de madeira.</p>
+          <p class="reveal text-sm text-ink/75 leading-relaxed md:max-w-md">Para a noiva Maya, buscamos uma estética modern glam, uma pele com acabamento glass skin em harmonia monocromática nos olhos e lábios, que trouxeram profundidade e um toque de mistério. Para o cabelo, escolhemos um coque torcido e a franja solta emoldurando seu rosto.</p>
         </div>
         
         <p class="pf-swipe eyebrow !text-[0.6rem] !tracking-[0.26em] mt-4 mb-1 text-teal/80">Deslize para ver mais<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></p>
@@ -678,9 +640,8 @@
         <div class="pf-head flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 md:gap-10">
           <div class="reveal flex items-baseline gap-4">
             <h3 class="font-display font-semibold text-[clamp(1.7rem,3.4vw,2.5rem)] leading-none text-terracotta" style="letter-spacing:-0.02em;">Noiva Iza</h3>
-            <span class="eyebrow !text-[0.62rem] !tracking-[0.24em] text-teal/90">Pé na areia</span>
           </div>
-          <p class="reveal text-sm text-ink/75 leading-relaxed md:max-w-md">Sol a pino na praia: turbante, renda e uma maquiagem construída para não ceder ao calor nem à maresia.</p>
+          <p class="reveal text-sm text-ink/75 leading-relaxed md:max-w-md">A noiva Iza escolheu um magnífico turbante branco para coroar o seu look, trazendo uma identidade visual marcante e repleta de significado. Para harmonizar com tanta imponência, escolhi técnicas e produtos específicos para beleza madura. Acabamento acetinado com efeito natural e hidratação na medida exata para refletir um viço sofisticado e saudável. Nos olhos, tons nude cintilantes completados pela aplicação estratégica de cílios em cantoneira para garantir um olhar magnético. Finalizamos com lábios nude em perfeita harmonia.</p>
         </div>
         
         <p class="pf-swipe eyebrow !text-[0.6rem] !tracking-[0.26em] mt-4 mb-1 text-teal/80">Deslize para ver mais<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></p>
@@ -723,7 +684,7 @@
             <img src="brand_assets/logo-emblem.png" alt="Logotipo Arih Ateliê" class="h-14 w-14 rounded-full object-cover ring-1 ring-sand" style="object-position:50% 45%;" />
             <span class="font-display text-3xl font-semibold text-terracotta">Arih Ateliê</span>
           </div>
-          <p class="footer-tagline mt-4 text-sm max-w-xs leading-relaxed">Natural Bridal Beauty. Alta performance, beleza solar e resistência à maresia — do “sim” ao nascer do sol.</p>
+          <p class="footer-tagline mt-4 text-sm max-w-xs leading-relaxed">Beleza resistente à maresia e a fortes emoções</p>
           <p class="script-accent footer-script text-xl mt-4">Beauty on Demand · Destination Wedding</p>
         </div>
         <nav class="text-sm" aria-label="Navegação do rodapé">
@@ -759,7 +720,6 @@
     <div class="lb-scrim" data-lb-dismiss></div>
     <div class="lb-stage" data-lb-dismiss>
       <img class="lb-img" id="lbImg" alt="" />
-      <p class="lb-cap" id="lbCap"></p>
     </div>
     <button type="button" class="lb-btn lb-close" id="lbClose" aria-label="Fechar">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -870,7 +830,6 @@
 
       const lb      = document.getElementById('lightbox');
       const lbImg   = document.getElementById('lbImg');
-      const lbCap   = document.getElementById('lbCap');
       const btnClose= document.getElementById('lbClose');
       const btnPrev = document.getElementById('lbPrev');
       const btnNext = document.getElementById('lbNext');
@@ -881,7 +840,6 @@
         const el = photos[index];
         lbImg.src = el.dataset.full;
         lbImg.alt = el.dataset.alt;
-        lbCap.innerHTML = '<b>' + el.dataset.project + '</b><br>' + el.dataset.alt;
       };
 
       const open = (i) => {
