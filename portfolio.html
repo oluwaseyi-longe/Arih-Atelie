@@ -444,6 +444,29 @@
     /* ---- Project header rule ---- */
     .pf-head { border-top:1px solid rgba(171,145,143,.35); padding-top: 1.5rem; }
 
+    /* ---- Project note: the description sits on a veil of the paper behind it,
+       so it lifts the text without cutting a card out of the watercolour ---- */
+    .pf-note {
+      position:relative; border-radius:1.1rem;
+      padding: 1.1rem 1.3rem 1.2rem 1.5rem;
+      background: linear-gradient(180deg, rgba(255,253,248,.42), rgba(251,246,236,.24));
+      border:1px solid rgba(255,253,248,.55);
+      backdrop-filter: blur(12px) saturate(112%);
+      -webkit-backdrop-filter: blur(12px) saturate(112%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.5),
+                  0 16px 34px -30px rgba(80,124,134,.45);
+    }
+    @supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+      .pf-note { background: linear-gradient(180deg, rgba(255,253,248,.85), rgba(251,246,236,.75)); }
+    }
+    .pf-note::before {
+      content:""; position:absolute; left:.7rem; top:1.15rem; bottom:1.2rem; width:1.5px;
+      border-radius:999px;
+      background: linear-gradient(180deg, rgba(138,75,45,.55), rgba(171,145,143,.12));
+    }
+    .pf-note-text { font-size:.95rem; line-height:1.7; color: rgba(60,49,41,.92); }
+    @media (min-width: 768px) { .pf-note-text { font-size:.98rem; } }
+
     /* ---- Lightbox ---- */
     .lb { position:fixed; inset:0; z-index:100; display:none; }
     .lb.open { display:block; }
@@ -571,10 +594,8 @@
             Casamento Ana Hickmann<br class="hidden sm:block"> e Edu Guedes
           </h2>
         </div>
-        <div class="reveal">
-          <p class="text-[1.02rem] text-ink/85 leading-relaxed">
-            A convite de Celso Kamura, assinei a maquiagem da família de Edu Guedes para o seu casamento com Ana Hickmann. Para suas sobrinhas damas de honra, valorizei os traços jovens com delicadeza para não pesar ou envelhecer a fisionomia. Para a sua filha, optei por uma técnica de construção de pele leve inspirada nas passarelas. Para sua mãe, a escolha foi um olhar sofisticado e lábios marcantes em tom de vermelho. Para sua irmã, uma pele com viço natural, olhos esfumados em marrom profundo equilibrados em um tom labial perfeitamente integrado a sua cor natural.
-          </p>
+        <div class="reveal pf-note">
+          <p class="pf-note-text">A convite de Celso Kamura, assinei a maquiagem da família de Edu Guedes para o seu casamento com Ana Hickmann. Para suas sobrinhas damas de honra, valorizei os traços jovens com delicadeza para não pesar ou envelhecer a fisionomia. Para a sua filha, optei por uma técnica de construção de pele leve inspirada nas passarelas. Para sua mãe, a escolha foi um olhar sofisticado e lábios marcantes em tom de vermelho. Para sua irmã, uma pele com viço natural, olhos esfumados em marrom profundo equilibrados em um tom labial perfeitamente integrado a sua cor natural.</p>
         </div>
       </div>
 
@@ -598,11 +619,13 @@
 
       <!-- Noiva Nyna -->
       <article id="nyna" class="scroll-mt-32">
-        <div class="pf-head flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 md:gap-10">
+        <div class="pf-head flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-10">
           <div class="reveal flex items-baseline gap-4">
             <h3 class="font-display font-semibold text-[clamp(1.7rem,3.4vw,2.5rem)] leading-none text-terracotta" style="letter-spacing:-0.02em;">Noiva Nyna</h3>
           </div>
-          <p class="reveal text-sm text-ink/75 leading-relaxed md:max-w-md">Para a maquiagem da noiva Nyna, apliquei a técnica second skin com acabamento glow. Um resultado sofisticado, natural e acima de tudo resistente à maresia. Olhos e lábios conversam com a mesma cintilância criando uma harmonia iluminada e atemporal. Para o penteado, escolhemos um coque desconstruído para combinar com o estilo boho da noiva.</p>
+          <div class="reveal pf-note md:max-w-md">
+            <p class="pf-note-text">Para a maquiagem da noiva Nyna, apliquei a técnica second skin com acabamento glow. Um resultado sofisticado, natural e acima de tudo resistente à maresia. Olhos e lábios conversam com a mesma cintilância criando uma harmonia iluminada e atemporal. Para o penteado, escolhemos um coque desconstruído para combinar com o estilo boho da noiva.</p>
+          </div>
         </div>
         <div class="mt-8 lg:mt-10"><button type="button" class="pf-photo reveal " data-full="assets/web/nina/01.jpg" data-project="Noiva Nyna" data-alt="Noiva sentada na pedra, de frente para o mar, no fim da tarde" aria-label="Ampliar foto: Noiva sentada na pedra, de frente para o mar, no fim da tarde"><img src="assets/web/nina/01.jpg" width="1600" height="1066" sizes="(min-width: 860px) 88vw, 92vw" alt="Noiva sentada na pedra, de frente para o mar, no fim da tarde" loading="lazy" decoding="async" /><span class="pf-mat"></span><span class="pf-zoom" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M11 8.4v5.2M8.4 11h5.2"/></svg></span></button></div>
         <p class="pf-swipe eyebrow !text-[0.6rem] !tracking-[0.26em] mt-4 mb-1 text-teal/80">Deslize para ver mais<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></p>
@@ -611,11 +634,13 @@
 
       <!-- Noiva Vitória -->
       <article id="vitoria" class="mt-16 lg:mt-24 scroll-mt-32">
-        <div class="pf-head flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 md:gap-10">
+        <div class="pf-head flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-10">
           <div class="reveal flex items-baseline gap-4">
             <h3 class="font-display font-semibold text-[clamp(1.7rem,3.4vw,2.5rem)] leading-none text-terracotta" style="letter-spacing:-0.02em;">Noiva Vitória</h3>
           </div>
-          <p class="reveal text-sm text-ink/75 leading-relaxed md:max-w-md">A noiva Vitória representa o glamour vintage. Optamos por uma pele com efeito natural e acabamento matte impecável, garantindo a sofisticação e a durabilidade necessária. Nos olhos, tons nude opacos trouxeram a profundidade ideal deixando o protagonismo absoluto para os lábios vermelhos. Para o cabelo escolhemos um penteado solto com divisão lateral.</p>
+          <div class="reveal pf-note md:max-w-md">
+            <p class="pf-note-text">A noiva Vitória representa o glamour vintage. Optamos por uma pele com efeito natural e acabamento matte impecável, garantindo a sofisticação e a durabilidade necessária. Nos olhos, tons nude opacos trouxeram a profundidade ideal deixando o protagonismo absoluto para os lábios vermelhos. Para o cabelo escolhemos um penteado solto com divisão lateral.</p>
+          </div>
         </div>
         
         <p class="pf-swipe eyebrow !text-[0.6rem] !tracking-[0.26em] mt-4 mb-1 text-teal/80">Deslize para ver mais<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></p>
@@ -624,11 +649,13 @@
 
       <!-- Noiva Maya -->
       <article id="maya" class="mt-16 lg:mt-24 scroll-mt-32">
-        <div class="pf-head flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 md:gap-10">
+        <div class="pf-head flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-10">
           <div class="reveal flex items-baseline gap-4">
             <h3 class="font-display font-semibold text-[clamp(1.7rem,3.4vw,2.5rem)] leading-none text-terracotta" style="letter-spacing:-0.02em;">Noiva Maya</h3>
           </div>
-          <p class="reveal text-sm text-ink/75 leading-relaxed md:max-w-md">Para a noiva Maya, buscamos uma estética modern glam, uma pele com acabamento glass skin em harmonia monocromática nos olhos e lábios, que trouxeram profundidade e um toque de mistério. Para o cabelo, escolhemos um coque torcido e a franja solta emoldurando seu rosto.</p>
+          <div class="reveal pf-note md:max-w-md">
+            <p class="pf-note-text">Para a noiva Maya, buscamos uma estética modern glam, uma pele com acabamento glass skin em harmonia monocromática nos olhos e lábios, que trouxeram profundidade e um toque de mistério. Para o cabelo, escolhemos um coque torcido e a franja solta emoldurando seu rosto.</p>
+          </div>
         </div>
         
         <p class="pf-swipe eyebrow !text-[0.6rem] !tracking-[0.26em] mt-4 mb-1 text-teal/80">Deslize para ver mais<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></p>
@@ -637,11 +664,13 @@
 
       <!-- Noiva Iza -->
       <article id="iza" class="mt-16 lg:mt-24 scroll-mt-32">
-        <div class="pf-head flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 md:gap-10">
+        <div class="pf-head flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-10">
           <div class="reveal flex items-baseline gap-4">
             <h3 class="font-display font-semibold text-[clamp(1.7rem,3.4vw,2.5rem)] leading-none text-terracotta" style="letter-spacing:-0.02em;">Noiva Iza</h3>
           </div>
-          <p class="reveal text-sm text-ink/75 leading-relaxed md:max-w-md">A noiva Iza escolheu um magnífico turbante branco para coroar o seu look, trazendo uma identidade visual marcante e repleta de significado. Para harmonizar com tanta imponência, escolhi técnicas e produtos específicos para beleza madura. Acabamento acetinado com efeito natural e hidratação na medida exata para refletir um viço sofisticado e saudável. Nos olhos, tons nude cintilantes completados pela aplicação estratégica de cílios em cantoneira para garantir um olhar magnético. Finalizamos com lábios nude em perfeita harmonia.</p>
+          <div class="reveal pf-note md:max-w-md">
+            <p class="pf-note-text">Para a noiva Iza, escolhi técnicas e produtos específicos para beleza madura. Acabamento acetinado com efeito natural e hidratação na medida exata para refletir um viço sofisticado e saudável. Nos olhos, tons nude cintilantes completados pela aplicação estratégica de cílios em cantoneira para garantir um olhar magnético. Finalizamos com lábios nude em perfeita harmonia.</p>
+          </div>
         </div>
         
         <p class="pf-swipe eyebrow !text-[0.6rem] !tracking-[0.26em] mt-4 mb-1 text-teal/80">Deslize para ver mais<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></p>
